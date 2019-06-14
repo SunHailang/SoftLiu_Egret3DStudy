@@ -1,1 +1,253 @@
-{"version":"4","assets":[],"objects":[{"class":"paper.Scene","name":"newScene.scene.json","extras":{},"entities":[{"uuid":"54904443-e0df-43cb-807b-70618464cfde"}],"lightmapIntensity":1,"ambientColor":[0.2,0.2,0.25,1],"fog":[0,0.01,0.01,100,0.5,0.5,0.5,1],"lightmaps":[]},{"uuid":"54904443-e0df-43cb-807b-70618464cfde","class":"paper.GameObject","name":"Main Camera","extras":{},"_enabled":true,"components":[{"uuid":"9d2a2f11-9b27-4a9c-b604-64d410e5cd2f"},{"uuid":"ec6a4d21-ca90-4c13-867d-040e38ed6412"}]}],"components":[{"uuid":"9d2a2f11-9b27-4a9c-b604-64d410e5cd2f","class":"egret3d.Transform","_localPosition":[0,10,-10],"_localRotation":[0.3826834323650898,0,0,0.9238795325112867],"extras":{}},{"uuid":"ec6a4d21-ca90-4c13-867d-040e38ed6412","class":"egret3d.Camera","extras":{}}]}
+{
+    "version": "5",
+    "assets": [
+        "builtin/cube.mesh.bin",
+        "Assets/materials/grid_a.mat.json",
+        "Assets/materials/grid_b.mat.json"
+    ],
+    "objects": [
+        {
+            "uuid": "31b0016b-2199-4fdb-a2b9-0f38d32bb4f2",
+            "class": "paper.Scene",
+            "name": "newScene.scene.json",
+            "extras": {},
+            "entities": [
+                {
+                    "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13"
+                },
+                {
+                    "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba"
+                },
+                {
+                    "uuid": "5860b1f8-9046-4348-b9d3-91086103255a"
+                },
+                {
+                    "uuid": "091b371a-24b6-4c23-99e0-9c174cf5c294"
+                },
+                {
+                    "uuid": "22b12f0e-7123-4bcb-b45c-56cee3828b4d"
+                }
+            ],
+            "lightmapIntensity": 1,
+            "ambientColor": [
+                0.2,
+                0.2,
+                0.25,
+                1
+            ],
+            "fog": [
+                0,
+                0.01,
+                0.01,
+                100,
+                0.5,
+                0.5,
+                0.5,
+                1
+            ],
+            "lightmaps": []
+        },
+        {
+            "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13",
+            "class": "paper.GameObject",
+            "name": "camera",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7"
+                },
+                {
+                    "uuid": "3356faf6-ae75-4c74-b007-b8a88d46a9c0"
+                }
+            ]
+        },
+        {
+            "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba",
+            "class": "paper.GameObject",
+            "name": "cube",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "bb790e05-3d20-43e5-a33f-360aa5cfed09"
+                },
+                {
+                    "uuid": "82a47a3a-9ad3-44a4-98d2-347cb7f615bc"
+                },
+                {
+                    "uuid": "3cfffe09-a3f5-4126-b82a-d7ff66e09c1d"
+                },
+                {
+                    "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada"
+                }
+            ]
+        },
+        {
+            "uuid": "5860b1f8-9046-4348-b9d3-91086103255a",
+            "class": "paper.GameObject",
+            "name": "MapScenes",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "0ed30f18-b87a-4309-b8cd-3e10d1a622f8"
+                }
+            ]
+        },
+        {
+            "uuid": "091b371a-24b6-4c23-99e0-9c174cf5c294",
+            "class": "paper.GameObject",
+            "name": "pointlight",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df"
+                },
+                {
+                    "uuid": "bf29e845-cee2-4874-9200-4f462a17d2fb"
+                }
+            ]
+        },
+        {
+            "uuid": "22b12f0e-7123-4bcb-b45c-56cee3828b4d",
+            "class": "paper.GameObject",
+            "name": "cube",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "b205033a-bdcb-4156-8ad7-d37fa92cde04"
+                },
+                {
+                    "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a"
+                },
+                {
+                    "uuid": "2eba50ed-e03d-482a-a9c8-43538d307046"
+                },
+                {
+                    "uuid": "38be9326-e648-41f2-ab44-9ed925c7c594"
+                }
+            ]
+        }
+    ],
+    "components": [
+        {
+            "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -21.641269128583016,
+                29.07373587319934,
+                -24.136879608190213
+            ],
+            "_localRotation": [
+                0.22350668781086533,
+                0.37131609894047596,
+                -0.09257950137234976,
+                0.8964363619895671
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "3356faf6-ae75-4c74-b007-b8a88d46a9c0",
+            "class": "egret3d.Camera",
+            "bufferMask": 1280,
+            "cullingMask": 1,
+            "fov": 1.5,
+            "extras": {}
+        },
+        {
+            "uuid": "bb790e05-3d20-43e5-a33f-360aa5cfed09",
+            "class": "egret3d.MeshRenderer",
+            "extras": {}
+        },
+        {
+            "uuid": "82a47a3a-9ad3-44a4-98d2-347cb7f615bc",
+            "class": "egret3d.Transform",
+            "extras": {}
+        },
+        {
+            "uuid": "3cfffe09-a3f5-4126-b82a-d7ff66e09c1d",
+            "class": "egret3d.BoxCollider",
+            "extras": {}
+        },
+        {
+            "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 0
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "0ed30f18-b87a-4309-b8cd-3e10d1a622f8",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                24.5,
+                0
+            ],
+            "children": [
+                {
+                    "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df"
+                },
+                {
+                    "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a"
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                0,
+                0.1654774642739455
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "bf29e845-cee2-4874-9200-4f462a17d2fb",
+            "class": "egret3d.PointLight",
+            "extras": {}
+        },
+        {
+            "uuid": "b205033a-bdcb-4156-8ad7-d37fa92cde04",
+            "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 1
+                },
+                {
+                    "asset": 2
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a",
+            "class": "egret3d.Transform",
+            "_localScale": [
+                50,
+                50,
+                50
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "2eba50ed-e03d-482a-a9c8-43538d307046",
+            "class": "egret3d.BoxCollider",
+            "extras": {}
+        },
+        {
+            "uuid": "38be9326-e648-41f2-ab44-9ed925c7c594",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 0
+            },
+            "extras": {}
+        }
+    ]
+}
