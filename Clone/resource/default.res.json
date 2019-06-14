@@ -2,9 +2,14 @@
 	"groups": [],
 	"resources": [
 		{
-			"url": "Assets/scenes/newScene.scene.json",
+			"url": "Assets/scenes/Splash.scene.json",
 			"type": "Scene",
-			"name": "Assets/scenes/newScene.scene.json"
+			"name": "Assets/scenes/Splash.scene.json"
+		},
+		{
+			"url": "newScene.scene.json",
+			"type": "Scene",
+			"name": "newScene.scene.json"
 		}
 	]
 }
