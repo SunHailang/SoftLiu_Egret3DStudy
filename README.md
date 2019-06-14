@@ -1,4 +1,4 @@
-# SoftLiu_Egret3DStudy
-Create First Egret3D Project
+# Egret Pro 入门示例工程
 
-init Egret 3D empty project
+## 如何使用 
+* 下载该工程使用 Egret Pro 打开
