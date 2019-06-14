@@ -1,0 +1,10 @@
+{
+	"groups": [],
+	"resources": [
+		{
+			"url": "Assets/scenes/newScene.scene.json",
+			"type": "Scene",
+			"name": "Assets/scenes/newScene.scene.json"
+		}
+	]
+}

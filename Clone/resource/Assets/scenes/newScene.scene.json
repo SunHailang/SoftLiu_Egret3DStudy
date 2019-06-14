@@ -1,0 +1,74 @@
+{
+    "version": "5",
+    "assets": [],
+    "objects": [
+        {
+            "uuid": "4384",
+            "class": "paper.Scene",
+            "name": "newScene.scene.json",
+            "extras": {},
+            "entities": [
+                {
+                    "uuid": "b1205468-e1ae-443c-9b8f-3c7275efcad4"
+                }
+            ],
+            "lightmapIntensity": 1,
+            "ambientColor": [
+                0.2,
+                0.2,
+                0.25,
+                1
+            ],
+            "fog": [
+                0,
+                0.01,
+                0.01,
+                100,
+                0.5,
+                0.5,
+                0.5,
+                1
+            ],
+            "lightmaps": []
+        },
+        {
+            "uuid": "b1205468-e1ae-443c-9b8f-3c7275efcad4",
+            "class": "paper.GameObject",
+            "name": "Main Camera",
+            "tag": "Main Camera",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "a715344f-825c-42f6-8d2b-b01c01d71066"
+                },
+                {
+                    "uuid": "b0ae5b08-fc5c-400a-87fa-b606cf258a21"
+                }
+            ]
+        }
+    ],
+    "components": [
+        {
+            "uuid": "a715344f-825c-42f6-8d2b-b01c01d71066",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                10,
+                -10
+            ],
+            "_localRotation": [
+                0.3826834323650898,
+                0,
+                0,
+                0.9238795325112867
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "b0ae5b08-fc5c-400a-87fa-b606cf258a21",
+            "class": "egret3d.Camera",
+            "extras": {}
+        }
+    ]
+}
