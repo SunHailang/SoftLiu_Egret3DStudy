@@ -5,6 +5,7 @@
  */
 
 import Splash from "./Splash/Splash";
+import EuiRoot from "./EUICode/EuiRoot";
 
 async function main() {
     await RES.loadConfig("resource/default.res.json", "resource/");
@@ -13,4 +14,5 @@ async function main() {
 
     // 强制引用，该问题将在 Egret Pro 1.0.0 修复。
     Splash;
+    EuiRoot;
 }

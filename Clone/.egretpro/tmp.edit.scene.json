@@ -1,9 +1,11 @@
 {
     "version": "5",
     "assets": [
+        "builtin/missing.mat.json",
         "builtin/cube.mesh.bin",
         "Assets/materials/grid_a.mat.json",
-        "Assets/materials/grid_b.mat.json"
+        "Assets/materials/grid_b.mat.json",
+        "builtin/plane.mesh.bin"
     ],
     "objects": [
         {
@@ -16,16 +18,19 @@
                     "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13"
                 },
                 {
+                    "uuid": "7a662592-57d7-487a-aaf4-66c7a87c1b43"
+                },
+                {
                     "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba"
                 },
                 {
                     "uuid": "5860b1f8-9046-4348-b9d3-91086103255a"
                 },
                 {
-                    "uuid": "091b371a-24b6-4c23-99e0-9c174cf5c294"
+                    "uuid": "0847066d-7ea2-4525-977c-6e1dd51b577c"
                 },
                 {
-                    "uuid": "22b12f0e-7123-4bcb-b45c-56cee3828b4d"
+                    "uuid": "c0bee1c6-e553-4a55-9f55-ec31cc109bb1"
                 }
             ],
             "lightmapIntensity": 1,
@@ -63,6 +68,24 @@
             ]
         },
         {
+            "uuid": "7a662592-57d7-487a-aaf4-66c7a87c1b43",
+            "class": "paper.GameObject",
+            "name": "EUI Root ",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "d588bcc3-7743-4e6c-96eb-8cab20ada1e5"
+                },
+                {
+                    "uuid": "24a1fe9b-c391-47fa-8c18-e4ce589bb686"
+                },
+                {
+                    "uuid": "3350e368-3e89-4e5f-90be-9425e82d2aed"
+                }
+            ]
+        },
+        {
             "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba",
             "class": "paper.GameObject",
             "name": "cube",
@@ -80,6 +103,9 @@
                 },
                 {
                     "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada"
+                },
+                {
+                    "uuid": "9b35f1eb-c17f-4448-a10f-93a64275bb26"
                 }
             ]
         },
@@ -96,38 +122,35 @@
             ]
         },
         {
-            "uuid": "091b371a-24b6-4c23-99e0-9c174cf5c294",
+            "uuid": "0847066d-7ea2-4525-977c-6e1dd51b577c",
             "class": "paper.GameObject",
-            "name": "pointlight",
+            "name": "directinallight",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df"
+                    "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e"
                 },
                 {
-                    "uuid": "bf29e845-cee2-4874-9200-4f462a17d2fb"
+                    "uuid": "9bf3228b-b404-432e-8fe4-89eb30710c7d"
                 }
             ]
         },
         {
-            "uuid": "22b12f0e-7123-4bcb-b45c-56cee3828b4d",
+            "uuid": "c0bee1c6-e553-4a55-9f55-ec31cc109bb1",
             "class": "paper.GameObject",
-            "name": "cube",
+            "name": "plane",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "b205033a-bdcb-4156-8ad7-d37fa92cde04"
+                    "uuid": "d3001c85-c368-49d3-8e8f-cb70c88e35d8"
                 },
                 {
-                    "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a"
+                    "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a"
                 },
                 {
-                    "uuid": "2eba50ed-e03d-482a-a9c8-43538d307046"
-                },
-                {
-                    "uuid": "38be9326-e648-41f2-ab44-9ed925c7c594"
+                    "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa"
                 }
             ]
         }
@@ -137,15 +160,15 @@
             "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -21.641269128583016,
-                29.07373587319934,
-                -24.136879608190213
+                -25.51777452340302,
+                37.04364045975972,
+                -24.277030475130232
             ],
             "_localRotation": [
-                0.22350668781086533,
-                0.37131609894047596,
-                -0.09257950137234976,
-                0.8964363619895671
+                0.3683961033879673,
+                0.35094369695068384,
+                -0.15259466234869698,
+                0.8472530328076943
             ],
             "extras": {}
         },
@@ -154,12 +177,33 @@
             "class": "egret3d.Camera",
             "bufferMask": 1280,
             "cullingMask": 1,
-            "fov": 1.5,
+            "fov": 0.8,
+            "extras": {}
+        },
+        {
+            "uuid": "d588bcc3-7743-4e6c-96eb-8cab20ada1e5",
+            "class": "egret3d.Transform",
+            "extras": {}
+        },
+        {
+            "uuid": "24a1fe9b-c391-47fa-8c18-e4ce589bb686",
+            "class": "egret3d.Egret2DRenderer",
+            "materials": [],
+            "extras": {}
+        },
+        {
+            "uuid": "3350e368-3e89-4e5f-90be-9425e82d2aed",
+            "class": "EuiRoot",
             "extras": {}
         },
         {
             "uuid": "bb790e05-3d20-43e5-a33f-360aa5cfed09",
             "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 0
+                }
+            ],
             "extras": {}
         },
         {
@@ -176,8 +220,13 @@
             "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 0
+                "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "9b35f1eb-c17f-4448-a10f-93a64275bb26",
+            "class": "Splash",
             "extras": {}
         },
         {
@@ -185,50 +234,62 @@
             "class": "egret3d.Transform",
             "_localPosition": [
                 0,
-                24.5,
+                -0.5,
                 0
             ],
             "children": [
                 {
-                    "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df"
+                    "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e"
                 },
                 {
-                    "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a"
+                    "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a"
                 }
             ],
             "extras": {}
         },
         {
-            "uuid": "5991c021-0c22-4e53-bc50-ac211acdf8df",
+            "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e",
             "class": "egret3d.Transform",
             "_localPosition": [
                 0,
+                322.8739175813831,
+                -1.4210854715202004e-14
+            ],
+            "_localRotation": [
+                0.5075383629607041,
                 0,
-                0.1654774642739455
+                0,
+                0.8616291604415258
             ],
             "extras": {}
         },
         {
-            "uuid": "bf29e845-cee2-4874-9200-4f462a17d2fb",
-            "class": "egret3d.PointLight",
+            "uuid": "9bf3228b-b404-432e-8fe4-89eb30710c7d",
+            "class": "egret3d.DirectionalLight",
             "extras": {}
         },
         {
-            "uuid": "b205033a-bdcb-4156-8ad7-d37fa92cde04",
+            "uuid": "d3001c85-c368-49d3-8e8f-cb70c88e35d8",
             "class": "egret3d.MeshRenderer",
             "materials": [
                 {
-                    "asset": 1
+                    "asset": 2
                 },
                 {
-                    "asset": 2
+                    "asset": 3
                 }
             ],
             "extras": {}
         },
         {
-            "uuid": "1777b7c8-7f2f-481d-a7a6-3b882b1c645a",
+            "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a",
             "class": "egret3d.Transform",
+            "_localRotation": [
+                -0.7071067811865475,
+                0,
+                0,
+                0.7071067811865476
+            ],
             "_localScale": [
                 50,
                 50,
@@ -237,15 +298,10 @@
             "extras": {}
         },
         {
-            "uuid": "2eba50ed-e03d-482a-a9c8-43538d307046",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
-            "uuid": "38be9326-e648-41f2-ab44-9ed925c7c594",
+            "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 0
+                "asset": 4
             },
             "extras": {}
         }
