@@ -8,6 +8,11 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
 export default class EuiRoot extends paper.Behaviour
 {
+    btn1_OnClick(e:egret.TouchEvent)
+    {
+        
+    }
+
     onStart()
     {
         
@@ -24,6 +29,7 @@ export default class EuiRoot extends paper.Behaviour
         theme.addEventListener(eui.UIEvent.COMPLETE, onThemeLoadComplete, this);
 
         function onThemeLoadComplete() {
+
             const myGroup = new eui.Group();
             renderer.root.addChild(myGroup);
             myGroup.width = 200;
@@ -33,12 +39,17 @@ export default class EuiRoot extends paper.Behaviour
             var btn1:eui.Button = new eui.Button();
             btn1.label = "Button A";
             //btn1.skinName = "ButtonSkin.exml";
-            btn1.addEventListener(egret.TouchEvent.TOUCH_TAP, Btn1_OnClick, null)
-            function Btn1_OnClick(e:egret.TouchEvent)
-            {
-                console.log("Button A Touch_up.");
-                
-            }
+            btn1.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e:egret.TouchEvent)=>{
+                console.log("Button A Touch_BEGIN.");            
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, "Button A", true);
+
+            }, null);
+
+            btn1.addEventListener(egret.TouchEvent.TOUCH_END, (e:egret.TouchEvent)=>{
+                console.log("Button A Touch_END");
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, "Button A", false);
+            }, null);
+            
             myGroup.addChild(btn1);
             var btn2:eui.Button = new eui.Button();
             btn2.label = "Button B";
@@ -46,6 +57,7 @@ export default class EuiRoot extends paper.Behaviour
             function Btn2_OnClick(e:egret.TouchEvent)
             {
                 console.log("Button B Touch_up.");
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["Button B"]);
             }
             myGroup.addChild(btn2);
             var btn3:eui.Button = new eui.Button();
@@ -89,15 +101,19 @@ export default class EuiRoot extends paper.Behaviour
 
             var iLayout:eui.HorizontalLayout = new eui.HorizontalLayout();
             iLayout.gap = 10;
-            iLayout.paddingBottom = 100;
+            iLayout.paddingTop = 300;
             iLayout.paddingLeft = 100;
             iLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
             iGroup.layout = iLayout;
 
         }
         
-    }    
+    }
 
+    onUpdate(delta:number)
+    {
+
+    }
 }
 
 class ThemeAdapter implements eui.IThemeAdapter {

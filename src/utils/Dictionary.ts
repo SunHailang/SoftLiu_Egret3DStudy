@@ -36,7 +36,6 @@ export default class Dictionary<KT, VT>
     {
         var index = this._keys.indexOf(key, 0);
         if (index != -1) {
-            console.log(this._values);
             return this._values[index];
         }
         return null;
