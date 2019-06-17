@@ -1,3 +1,5 @@
+import EventsManager from "../utils/EventManager/EventsManager";
+
 /**
  *  __author__ = "sun hai lang"
  *  __date__ = 2019-06-14
@@ -35,6 +37,7 @@ export default class EuiRoot extends paper.Behaviour
             function Btn1_OnClick(e:egret.TouchEvent)
             {
                 console.log("Button A Touch_up.");
+                
             }
             myGroup.addChild(btn1);
             var btn2:eui.Button = new eui.Button();
@@ -55,8 +58,10 @@ export default class EuiRoot extends paper.Behaviour
             
             var myBtn:eui.Button = new eui.Button();
             myBtn.label = "Button I";
-            myBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>{
+            myBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
+            {
                 console.log("Button I Touch_up");
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["Button I"]);
             }, null)
             myGroup.addChild(myBtn);            
 

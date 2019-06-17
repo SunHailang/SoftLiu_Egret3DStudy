@@ -4,21 +4,33 @@
  * 
  */
 
+import EventsManager from "../utils/EventManager/EventsManager";
+
 export default class Splash extends paper.Behaviour
 {
     onAwake()
     {
-
+        
     }
 
     onEnable()
     {
         console.log("Splash");
+        EventsManager.getInstance().RegisterEvent(Events.OnClickType, this.OnOnClickType);
     }
 
     onDisable()
     {
+        EventsManager.getInstance().DeregisterEvent(Events.OnClickType, this.OnOnClickType);
+    }
 
+    private OnOnClickType(eventType:Events, ...items:any[])
+    {
+        let type = eventType;
+        if(items.length > 0)
+        {
+            
+        }
     }
 
     onStart()
