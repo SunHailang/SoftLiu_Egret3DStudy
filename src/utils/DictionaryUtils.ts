@@ -6,7 +6,7 @@
  * 
  */
 
-export default class Dictionary<KT, VT>
+export default class DictionaryUtils<KT, VT>
 {
 
     private _keys: KT[] = [];	

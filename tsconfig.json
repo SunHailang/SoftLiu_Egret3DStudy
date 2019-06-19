@@ -1,5 +1,8 @@
 {
 	"compilerOptions": {
+
+		"strictNullChecks": false, 
+
 		"skipLibCheck": true,
 		"experimentalDecorators": true,
 		"strict": true,

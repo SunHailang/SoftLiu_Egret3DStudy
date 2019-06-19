@@ -13866,7 +13866,7 @@ var egret3d;
          */
         Transform.prototype.rotateAround = function (worldPosition, worldAxis, angle) {
             this.rotateOnAxis(worldAxis, angle, true);
-            this.position = this._localPosition.applyMatrix(_helpMatrix.fromRotation(_helpRotation.fromAxis(worldAxis, angle)).fromTranslate(worldPosition, true), this.position);
+            this.position = this._localPosition.applyMatrix(_helpMatrix.fromRotation(_helpRotation.fromAxis(worldAxis, angle)).fromTranslate(worldPosition, true), this.position.subtract(worldPosition));
             return this;
         };
         /**

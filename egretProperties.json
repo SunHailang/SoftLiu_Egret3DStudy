@@ -41,7 +41,7 @@
 		},
 		{
 			"name": "oimo",
-			"path": "./oimo/oimo"
+			"path": "./libs/oimo"
 		},
 		{
 			"name": "promise"

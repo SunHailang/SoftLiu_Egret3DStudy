@@ -6,7 +6,7 @@
  * 
  */
 
-import Dictionary from "../Dictionary";
+import DictionaryUtils from "../DictionaryUtils";
 
  export default class EventsManager
  {
@@ -27,7 +27,7 @@ import Dictionary from "../Dictionary";
         return EventsManager.instance
     }
 
-    dict:Dictionary<Events, ((...item:any[])=>void)[]> = new Dictionary<Events,  ((...item:any[])=>void)[]>();
+    dict:DictionaryUtils<Events, ((...item:any[])=>void)[]> = new DictionaryUtils<Events,  ((...item:any[])=>void)[]>();
 
     public RegisterEvent(type:Events, action:(type:Events, ...item:any[])=>void):void
     {
