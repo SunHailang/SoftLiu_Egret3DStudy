@@ -73,7 +73,7 @@ export default class Splash extends paper.Behaviour
                 {
                     // 按下
                     this.m_btnAPress = true;
-                    this.test();
+                    this.test(1000);
                 }
                 else
                 {

@@ -1,4 +1,5 @@
 import EventsManager from "../utils/EventManager/EventsManager";
+import HSWData from "./euiData/HSWData";
 
 /**
  *  __author__ = "sun hai lang"
@@ -84,28 +85,13 @@ export default class EuiRoot extends paper.Behaviour
             vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
             myGroup.layout = vLayout;
 
-            const iGroup = new eui.Group();
-            renderer.root.addChild(iGroup);
-            iGroup.width = 100;
-            iGroup.height = 100;
-            iGroup.layout = new eui.BasicLayout();
+            const hswData = new HSWData();
+            renderer.root.addChild(hswData);
+            hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
 
-            var myLogo:eui.Image = new eui.Image();
-            myLogo.height = 100;
-            myLogo.width = 100;
-            RES.getResAsync("logo_png",(event:any)=>{
-                console.log(event);
-                myLogo.texture = event
-            },myLogo);
-            iGroup.addChild(myLogo);
+                console.log("showNotic");
 
-            var iLayout:eui.HorizontalLayout = new eui.HorizontalLayout();
-            iLayout.gap = 10;
-            iLayout.paddingTop = 300;
-            iLayout.paddingLeft = 100;
-            iLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
-            iGroup.layout = iLayout;
-
+            },null);
         }
         
     }

@@ -62,6 +62,176 @@
 			"name": "checkbox_unselect_png"
 		},
 		{
+			"url": "2d/assets/HSW/FE_group_A.image.json",
+			"type": "json",
+			"name": "FE_group_A_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_A.png",
+			"type": "image",
+			"name": "FE_group_A_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_B.image.json",
+			"type": "json",
+			"name": "FE_group_B_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_B.png",
+			"type": "image",
+			"name": "FE_group_B_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_C.image.json",
+			"type": "json",
+			"name": "FE_group_C_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_C.png",
+			"type": "image",
+			"name": "FE_group_C_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_D.image.json",
+			"type": "json",
+			"name": "FE_group_D_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_D.png",
+			"type": "image",
+			"name": "FE_group_D_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_E.image.json",
+			"type": "json",
+			"name": "FE_group_E_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_E.png",
+			"type": "image",
+			"name": "FE_group_E_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_F.image.json",
+			"type": "json",
+			"name": "FE_group_F_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_F.png",
+			"type": "image",
+			"name": "FE_group_F_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_S.image.json",
+			"type": "json",
+			"name": "FE_group_S_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_group_S.png",
+			"type": "image",
+			"name": "FE_group_S_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_cross.image.json",
+			"type": "json",
+			"name": "FE_icon_cross_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_cross.png",
+			"type": "image",
+			"name": "FE_icon_cross_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_mission_hungry_CN.image.json",
+			"type": "json",
+			"name": "FE_icon_mission_hungry_CN_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_mission_hungry_CN.png",
+			"type": "image",
+			"name": "FE_icon_mission_hungry_CN_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterG.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterG_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterG.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterG_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterH.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterH_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterH.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterH_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterN.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterN_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterN.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterN_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterR.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterR_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterR.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterR_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterU.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterU_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterU.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterU_png"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterY.image.json",
+			"type": "json",
+			"name": "FE_icon_radar_letterY_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/FE_icon_radar_letterY.png",
+			"type": "image",
+			"name": "FE_icon_radar_letterY_png"
+		},
+		{
+			"url": "2d/assets/HSW/shop_3.image.json",
+			"type": "json",
+			"name": "shop_3_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/shop_3.png",
+			"type": "image",
+			"name": "shop_3_png"
+		},
+		{
+			"url": "2d/assets/HSW/showNotic.image.json",
+			"type": "json",
+			"name": "showNotic_image_json"
+		},
+		{
+			"url": "2d/assets/HSW/showNotic.png",
+			"type": "image",
+			"name": "showNotic_png"
+		},
+		{
 			"url": "2d/assets/ImageLogo/logo.image.json",
 			"type": "json",
 			"name": "logo_image_json"

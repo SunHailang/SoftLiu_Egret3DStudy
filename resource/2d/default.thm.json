@@ -12,7 +12,8 @@
 		"eui.ToggleSwitch": "resource/2d/eui_skins/ToggleSwitchSkin.exml",
 		"eui.VScrollBar": "resource/2d/eui_skins/VScrollBarSkin.exml",
 		"eui.VSlider": "resource/2d/eui_skins/VSliderSkin.exml",
-		"eui.ItemRenderer": "resource/2d/eui_skins/ItemRendererSkin.exml"
+		"eui.ItemRenderer": "resource/2d/eui_skins/ItemRendererSkin.exml",
+		"HSWData":"resource/2d/eui_skins/HSWDataSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -28,7 +29,8 @@
 		"resource/2d/eui_skins/TextInputSkin.exml",
 		"resource/2d/eui_skins/ToggleSwitchSkin.exml",
 		"resource/2d/eui_skins/VScrollBarSkin.exml",
-		"resource/2d/eui_skins/VSliderSkin.exml"
+		"resource/2d/eui_skins/VSliderSkin.exml",
+		"resource/2d/eui_skins/HSWDataSkin.exml"
 	],
 	"path": "resource/2d/default.thm.json"
 }
