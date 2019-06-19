@@ -417,6 +417,11 @@
 			"name": "default_thm_json"
 		},
 		{
+			"url": "Assets/materials/blue.mat.json",
+			"type": "Material",
+			"name": "Assets/materials/blue.mat.json"
+		},
+		{
 			"url": "Assets/materials/grid_a.mat.json",
 			"type": "Material",
 			"name": "Assets/materials/grid_a.mat.json"
@@ -430,6 +435,16 @@
 			"url": "Assets/scenes/Splash.scene.json",
 			"type": "Scene",
 			"name": "Assets/scenes/Splash.scene.json"
+		},
+		{
+			"url": "Assets/textures/button_down.image.json",
+			"type": "TextureDesc",
+			"name": "Assets/textures/button_down.image.json"
+		},
+		{
+			"url": "Assets/textures/button_down.png",
+			"type": "Texture",
+			"name": "Assets/textures/button_down.png"
 		},
 		{
 			"url": "Assets/textures/grid_a.image.json",

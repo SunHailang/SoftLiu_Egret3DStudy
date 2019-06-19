@@ -6,7 +6,8 @@
         "builtin/cube.mesh.bin",
         "Assets/materials/grid_a.mat.json",
         "Assets/materials/grid_b.mat.json",
-        "builtin/plane.mesh.bin"
+        "builtin/plane.mesh.bin",
+        "builtin/sphere.mesh.bin"
     ],
     "objects": [
         {
@@ -35,6 +36,9 @@
                 },
                 {
                     "uuid": "c0bee1c6-e553-4a55-9f55-ec31cc109bb1"
+                },
+                {
+                    "uuid": "7b8bc88a-8ef3-44b3-a566-7a4f974d1c5a"
                 }
             ],
             "lightmapIntensity": 1,
@@ -178,6 +182,24 @@
                     "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa"
                 }
             ]
+        },
+        {
+            "uuid": "7b8bc88a-8ef3-44b3-a566-7a4f974d1c5a",
+            "class": "paper.GameObject",
+            "name": "cube",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "2ef808dc-63b3-4c15-b31c-f13e645d30b4"
+                },
+                {
+                    "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af"
+                },
+                {
+                    "uuid": "76a70f58-5a0d-43ba-af12-7e3fbc673706"
+                }
+            ]
         }
     ],
     "components": [
@@ -307,6 +329,9 @@
                 },
                 {
                     "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a"
+                },
+                {
+                    "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af"
                 }
             ],
             "extras": {}
@@ -366,6 +391,35 @@
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 5
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "2ef808dc-63b3-4c15-b31c-f13e645d30b4",
+            "class": "egret3d.MeshRenderer",
+            "materials": [],
+            "extras": {}
+        },
+        {
+            "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -205.645,
+                -0.48,
+                0
+            ],
+            "_localScale": [
+                5,
+                1,
+                100
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "76a70f58-5a0d-43ba-af12-7e3fbc673706",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 6
             },
             "extras": {}
         },

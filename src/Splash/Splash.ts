@@ -26,6 +26,8 @@ export default class Splash extends paper.Behaviour
     m_cubeList:CubeMove[] = [];
 
     private m_btnAPress:boolean = false;
+    //用于控制在多次执行延时函数，造成的async函数同一时间多次执行
+    private m_btnPressIndex:number = 0;
 
     onAwake()
     {
@@ -81,7 +83,7 @@ export default class Splash extends paper.Behaviour
                     this.m_btnAPress = false;
                 }
                 this.m_cubeList.forEach(element => {
-                    element.OnRotation(true);
+                    //element.OnRotation(true);
                 });
             }
             else if(items[0] == "Button B")
@@ -105,11 +107,17 @@ export default class Splash extends paper.Behaviour
     }
     //delay 等待延迟的时间参数  单位 毫秒
     async test(delay:number) {
+        this.m_btnPressIndex++;
         while(this.m_btnAPress)
         {
             console.log("PressMethod.");
-            await new Promise((resolve) => setTimeout(resolve,delay)); 
+            await new Promise((resolve) => setTimeout(resolve,delay));
+            if(!this.m_btnAPress || this.m_btnPressIndex > 1)
+            {
+                break;
+            }
         }
+        this.m_btnPressIndex--;
     }
 
     onFixedUpdate(delta:number)

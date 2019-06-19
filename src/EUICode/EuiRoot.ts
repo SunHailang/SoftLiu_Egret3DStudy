@@ -30,61 +30,7 @@ export default class EuiRoot extends paper.Behaviour
         theme.addEventListener(eui.UIEvent.COMPLETE, onThemeLoadComplete, this);
 
         function onThemeLoadComplete() {
-
-            const myGroup = new eui.Group();
-            renderer.root.addChild(myGroup);
-            myGroup.width = 200;
-            myGroup.height = 400;
-            myGroup.layout = new eui.BasicLayout();
-
-            var btn1:eui.Button = new eui.Button();
-            btn1.label = "Button A";
-            //btn1.skinName = "ButtonSkin.exml";
-            btn1.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e:egret.TouchEvent)=>{
-                console.log("Button A Touch_BEGIN.");            
-                EventsManager.getInstance().TriggerEvent(Events.OnClickType, "Button A", true);
-
-            }, null);
-
-            btn1.addEventListener(egret.TouchEvent.TOUCH_END, (e:egret.TouchEvent)=>{
-                console.log("Button A Touch_END");
-                EventsManager.getInstance().TriggerEvent(Events.OnClickType, "Button A", false);
-            }, null);
             
-            myGroup.addChild(btn1);
-            var btn2:eui.Button = new eui.Button();
-            btn2.label = "Button B";
-            btn2.addEventListener(egret.TouchEvent.TOUCH_TAP, Btn2_OnClick, null)
-            function Btn2_OnClick(e:egret.TouchEvent)
-            {
-                console.log("Button B Touch_up.");
-                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["Button B"]);
-            }
-            myGroup.addChild(btn2);
-            var btn3:eui.Button = new eui.Button();
-            btn3.label = "Button C";
-            btn3.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
-            {
-                console.log("Button C Touch_up.");
-            }, null)
-            myGroup.addChild(btn3);        
-            
-            var myBtn:eui.Button = new eui.Button();
-            myBtn.label = "Button I";
-            myBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
-            {
-                console.log("Button I Touch_up");
-                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["Button I"]);
-            }, null)
-            myGroup.addChild(myBtn);            
-
-            var vLayout:eui.VerticalLayout = new eui.VerticalLayout();
-            vLayout.gap = 10;
-            vLayout.paddingTop = 30;
-            vLayout.paddingLeft = 0;
-            vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
-            myGroup.layout = vLayout;
-
             const hswData = new HSWData();
             renderer.root.addChild(hswData);
             hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
