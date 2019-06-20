@@ -27,11 +27,11 @@ import DictionaryUtils from "../DictionaryUtils";
         return EventsManager.instance
     }
 
-    dict:DictionaryUtils<Events, ((...item:any[])=>void)[]> = new DictionaryUtils<Events,  ((...item:any[])=>void)[]>();
+    dict:DictionaryUtils<Events, ((eventType:Events, items:any)=>void)[]> = new DictionaryUtils<Events, ((eventType:Events, items:any)=>void)[]>();
 
-    public RegisterEvent(type:Events, action:(type:Events, ...item:any[])=>void):void
+    public RegisterEvent(type:Events, action:(type:Events, items:any)=>void):void
     {
-        console.log("RegisterEvent: "+ type.toString());
+        console.log("RegisterEvent: "+ type);
         if(this.dict.ContainsKey(type))
         {
             let values = this.dict.TryGetValue(type);
@@ -49,18 +49,18 @@ import DictionaryUtils from "../DictionaryUtils";
         }
     }
 
-    public TriggerEvent(type:Events, ...items:any[]):void
+    public TriggerEvent(type:Events, items:any):void
     {
         let values = this.dict.TryGetValue(type);        
         if(values)
         {
-           values.forEach(element => {
+            values.forEach(element => {
                element(type, items);
            });
         }
     }
 
-    public DeregisterEvent(type:Events, action:(type:Events, ...item:any[])=>void):void
+    public DeregisterEvent(type:Events, action:(type:Events, items:any)=>void):void
     {
         if(this.dict.ContainsKey(type))
         {

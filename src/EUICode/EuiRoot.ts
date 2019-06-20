@@ -36,8 +36,13 @@ export default class EuiRoot extends paper.Behaviour
             hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
 
                 console.log("showNotic");
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["showNotic", true, 15]);
 
             },null);
+
+            hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>{
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_click_scenc"]);
+            }, null);
         }
         
     }

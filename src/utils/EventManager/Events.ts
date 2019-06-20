@@ -9,4 +9,7 @@
  const enum Events
  {
     OnClickType,
+   
+    OnGameStartType,
+    OnGameEndType,
  }

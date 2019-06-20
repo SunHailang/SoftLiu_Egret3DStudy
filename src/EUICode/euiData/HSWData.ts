@@ -7,6 +7,7 @@
 
 export default class HSWData extends eui.Component implements eui.UIComponent {
 
+    public image_click_scenc:eui.Button;
 
     public showNotic:eui.Image;
     public letterH:eui.Image;

@@ -29,12 +29,16 @@ export default class Splash extends paper.Behaviour
     //用于控制在多次执行延时函数，造成的async函数同一时间多次执行
     private m_btnPressIndex:number = 0;
 
+    private m_gameEnd:boolean = false;
+
     onAwake()
     {
-        
+        EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+        EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
     }
     onStart()
     {
+        this.m_gameEnd = false;
         if(this.target)
         {
             let cube = this.target.getComponent(CubeMove);
@@ -44,9 +48,9 @@ export default class Splash extends paper.Behaviour
             }
             console.log(this.m_cubeList.length);
         }
-
         //this.test();
     }
+
     onEnable()
     {
         console.log("RegisterEvent Splash");
@@ -59,40 +63,27 @@ export default class Splash extends paper.Behaviour
         EventsManager.getInstance().DeregisterEvent(Events.OnClickType, this.OnOnClickType.bind(this));
     }
 
-    OnOnClickType(eventType:Events, ...items:any[])
+    OnOnClickType(eventType:Events, items:any)
     {
+        if(this.m_gameEnd) return;
         let type = eventType;
         if(items.length > 0)
         {
-            if(items[0] == "Button I")
+            if(items[0] == "image_click_scenc")
             {
-                //this.m_canMove = false;
+                console.log(items);
                 
             }
-            else if(items[0][0] == "Button A")
-            {
-                if(items[0][1])
-                {
-                    // 按下
-                    this.m_btnAPress = true;
-                    this.test(1000);
-                }
-                else
-                {
-                    // 抬起
-                    this.m_btnAPress = false;
-                }
-                this.m_cubeList.forEach(element => {
-                    //element.OnRotation(true);
-                });
-            }
-            else if(items[0] == "Button B")
-            {
-                //this.m_canMove = true;
-                //this.m_moveDir = -2;
-            }
         }
-    }    
+    }
+    OnGameStartTypeFunc(eventType:Events, items:any)
+    {
+        this.m_gameEnd = false;
+    }
+    OnGameEndTypeFunc(eventType:Events, items:any)
+    {
+        this.m_gameEnd = true;
+    }
 
     onUpdate(delta:number)
     {
@@ -132,7 +123,8 @@ export default class Splash extends paper.Behaviour
 
     onDestroy()
     {
-
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
     }
 
 }

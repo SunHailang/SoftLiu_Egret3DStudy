@@ -7,6 +7,7 @@
 import Splash from "./Splash/Splash";
 import EuiRoot from "./EUICode/EuiRoot";
 import CubeMove from "./Splash/CubeMove";
+import MoveCar from "./Splash/MoveCar";
 
 async function main() {
     await RES.loadConfig("resource/default.res.json", "resource/");
@@ -17,4 +18,5 @@ async function main() {
     Splash;
     EuiRoot;
     CubeMove;
+    MoveCar;
 }

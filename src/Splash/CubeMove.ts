@@ -6,8 +6,6 @@
 
  export default class CubeMove extends paper.Behaviour
  {
-
-    m_canMove:boolean = false;
     m_canRotation:boolean = false;
 
     m_moveDir:number = 2;
@@ -15,16 +13,18 @@
     m_endPostion:egret3d.Vector3 = egret3d.Vector3.ZERO;
     m_isStatic = true;
 
+    private m_moveStart:boolean = false;
+    private m_moveStay:boolean = false;
+    private m_moveEnd:boolean = false;
     onStart()
     {
-        this.m_canMove = false;
         this.m_canRotation = false;
         this.m_moveDir = 2;
     }
 
     onFixedUpdate(delta:number)
     {
-        if(this.m_canMove)
+        if(this.m_moveStart)
         {
            this.transform.setLocalPosition(new egret3d.Vector3(this.transform.localPosition.x + this.m_moveDir * delta, 
                                                                 this.transform.localPosition.y, 
@@ -53,7 +53,7 @@
     public OnMove(move:boolean, endpos:egret3d.Vector3)
     {
         this.m_endPostion = endpos;
-        this.m_canMove = move;
+        this.m_moveStart = move;
     }
 
     public OnRotation(rotation:boolean)
