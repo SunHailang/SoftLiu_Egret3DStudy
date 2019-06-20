@@ -51,8 +51,7 @@ export default class EuiRoot extends paper.Behaviour
             }, null);
 
             // 当所有控件加载完成结束
-            this.m_gameStart = true;
-            this.m_gameEnd = false;
+            EventsManager.getInstance().TriggerEvent(Events.OnGameStartType, null);
 
         }, this);
 
@@ -61,7 +60,8 @@ export default class EuiRoot extends paper.Behaviour
 
     OnGameStartTypeFunc(eventType:Events, items:any)
     {
-        
+        this.m_gameStart = true;
+        this.m_gameEnd = false;
     }
     OnGameEndTypeFunc(eventType:Events, items:any)
     {

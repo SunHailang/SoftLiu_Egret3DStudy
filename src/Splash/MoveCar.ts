@@ -8,12 +8,11 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
  export default class MoveCar extends paper.Behaviour
  {
-    // true 表示正方向， false 表示反方向    
-    @paper.editor.property(paper.editor.EditType.CHECKBOX)
+    // 正数 表示正方向， 负数 表示反方向    
+    @paper.editor.property(paper.editor.EditType.FLOAT)
     @paper.serializedField
-    public m_moveDir:boolean = true;
+    public m_moveSpeed:number = 3;
 
-     private m_moveSpeed:number = 3;
 
      private m_moveEnd:number = 23;
 
@@ -33,11 +32,6 @@ import EventsManager from "../utils/EventManager/EventsManager";
         {
             this.m_moveSpeed = 5;
         }
-
-        if(!this.m_moveDir)
-        {
-            this.m_moveSpeed *= -1;
-        }
      }
 
      onFixedUpdate(delta:number)
@@ -49,7 +43,7 @@ import EventsManager from "../utils/EventManager/EventsManager";
         this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x, 
                                                             this.transform.localPosition.y, 
                                                             this.transform.localPosition.z + delta * this.m_moveSpeed));
-        if(this.m_moveDir)
+        if(this.m_moveSpeed > 0)
         {
             if(this.transform.localPosition.z > this.m_moveEnd)
             {
