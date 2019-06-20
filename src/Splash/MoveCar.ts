@@ -8,6 +8,11 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
  export default class MoveCar extends paper.Behaviour
  {
+    // true 表示正方向， false 表示反方向    
+    @paper.editor.property(paper.editor.EditType.CHECKBOX)
+    @paper.serializedField
+    public m_moveDir:boolean = true;
+
      private m_moveSpeed:number = 3;
 
      private m_moveEnd:number = 23;
@@ -16,14 +21,10 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
      private m_gameEnd:boolean = false;
 
+
      onAwake(config:any)
      {
-        console.log(config);
         EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
-     }
-     onDestroy()
-     {
-        EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
      }
 
      onStart()
@@ -31,6 +32,11 @@ import EventsManager from "../utils/EventManager/EventsManager";
         if(this.gameObject.name == "car_2")
         {
             this.m_moveSpeed = 5;
+        }
+
+        if(!this.m_moveDir)
+        {
+            this.m_moveSpeed *= -1;
         }
      }
 
@@ -43,32 +49,26 @@ import EventsManager from "../utils/EventManager/EventsManager";
         this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x, 
                                                             this.transform.localPosition.y, 
                                                             this.transform.localPosition.z + delta * this.m_moveSpeed));
-        if(this.transform.localPosition.z > this.m_moveEnd)
+        if(this.m_moveDir)
         {
-            this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x, 
-                this.transform.localPosition.y, 
-                this.m_moveStart));
+            if(this.transform.localPosition.z > this.m_moveEnd)
+            {
+                this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x, 
+                    this.transform.localPosition.y, 
+                    this.m_moveStart));
+            }
+        }
+        else
+        {
+            if(this.transform.localPosition.z < this.m_moveStart)
+            {
+                this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x, 
+                    this.transform.localPosition.y, 
+                    this.m_moveEnd));
+            }
         }
         //判断是否撞到
 
-     }
-
-     onCollisionEnter(collider:any)
-     {
-        console.log("onCollisionEnter");
-        console.log(collider);
-     }
-
-     onTriggerEnter(collider:any)
-     {
-        console.log("onTriggerEnter");
-        console.log(collider);
-     }
-
-     onTriggerExit(collider:any)
-     {
-        console.log("onTriggerExit");
-        console.log(collider);
      }
 
      private OnGameEndTypeFunc(eventType:Events, items:any)
@@ -76,5 +76,9 @@ import EventsManager from "../utils/EventManager/EventsManager";
         this.m_gameEnd = true;
      }
 
+     onDestroy()
+     {
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+     }
     
  }

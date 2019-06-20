@@ -194,7 +194,7 @@
         {
             "uuid": "42aa83f5-47e3-471d-8f81-2a75a5fd5fca",
             "class": "paper.GameObject",
-            "name": "cube",
+            "name": "cube1",
             "extras": {},
             "_enabled": true,
             "components": [
@@ -218,7 +218,7 @@
         {
             "uuid": "a663514f-6ebc-4fbe-aa6d-6b5f39aa0fd0",
             "class": "paper.GameObject",
-            "name": "cube",
+            "name": "cube2",
             "extras": {},
             "_enabled": true,
             "components": [
@@ -242,7 +242,7 @@
         {
             "uuid": "edbc526d-db07-4a3d-bdbd-97c1772a916c",
             "class": "paper.GameObject",
-            "name": "cube",
+            "name": "cube3",
             "extras": {},
             "_enabled": true,
             "components": [
@@ -266,7 +266,7 @@
         {
             "uuid": "21cc1711-2a97-41d5-80b1-8f1d62bc5477",
             "class": "paper.GameObject",
-            "name": "cube",
+            "name": "cube4",
             "extras": {},
             "_enabled": true,
             "components": [
@@ -505,10 +505,10 @@
                     "uuid": "e11f5024-ff90-4580-af25-f02f7129550e"
                 },
                 {
-                    "uuid": "265e040f-4317-4a6b-b68c-5b3a37d3f42e"
+                    "uuid": "6a2ef3d3-461f-4506-ad88-3fa84c0e9b54"
                 },
                 {
-                    "uuid": "6a2ef3d3-461f-4506-ad88-3fa84c0e9b54"
+                    "uuid": "1dcf9a0c-6eb1-4b2b-af5e-2d0b49a95843"
                 }
             ]
         },
@@ -526,10 +526,10 @@
                     "uuid": "04afbd3a-c140-447c-ac10-096926b6053c"
                 },
                 {
-                    "uuid": "442c0b00-b42e-4940-8c0c-4a09c8f35708"
+                    "uuid": "55adb837-37b2-4ea1-b8b1-4f6abd82eb74"
                 },
                 {
-                    "uuid": "55adb837-37b2-4ea1-b8b1-4f6abd82eb74"
+                    "uuid": "fc6a551f-6798-4421-809f-43b176681f5c"
                 }
             ]
         },
@@ -547,10 +547,10 @@
                     "uuid": "91d568a0-d9ce-4d93-9235-268d00aaa028"
                 },
                 {
-                    "uuid": "ed9f2972-a337-41d5-bb7f-7c0cfc8dbdf9"
+                    "uuid": "0cadda4e-4634-4534-9627-74f2477ae58f"
                 },
                 {
-                    "uuid": "0cadda4e-4634-4534-9627-74f2477ae58f"
+                    "uuid": "86d7e043-1fe3-467c-900c-1eb5295f8858"
                 }
             ]
         },
@@ -568,10 +568,10 @@
                     "uuid": "74401e36-9203-4514-b571-a4634e616ebc"
                 },
                 {
-                    "uuid": "0939d69b-9049-4dbf-be08-2bc52d1917fd"
+                    "uuid": "55d81fb4-8c46-48af-bb3a-d254ab827623"
                 },
                 {
-                    "uuid": "55d81fb4-8c46-48af-bb3a-d254ab827623"
+                    "uuid": "cf03ce36-e245-4cbf-b71f-9646bc620519"
                 }
             ]
         },
@@ -1229,7 +1229,7 @@
             "uuid": "20941f18-e4c4-4f24-9bc5-b67708c28846",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -193.14089730242097,
+                -197,
                 0,
                 0
             ],
@@ -1301,16 +1301,16 @@
             "extras": {}
         },
         {
-            "uuid": "265e040f-4317-4a6b-b68c-5b3a37d3f42e",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "6a2ef3d3-461f-4506-ad88-3fa84c0e9b54",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "1dcf9a0c-6eb1-4b2b-af5e-2d0b49a95843",
+            "class": "MoveCar",
             "extras": {}
         },
         {
@@ -1329,16 +1329,16 @@
             "extras": {}
         },
         {
-            "uuid": "442c0b00-b42e-4940-8c0c-4a09c8f35708",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "55adb837-37b2-4ea1-b8b1-4f6abd82eb74",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "fc6a551f-6798-4421-809f-43b176681f5c",
+            "class": "MoveCar",
             "extras": {}
         },
         {
@@ -1357,16 +1357,16 @@
             "extras": {}
         },
         {
-            "uuid": "ed9f2972-a337-41d5-bb7f-7c0cfc8dbdf9",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "0cadda4e-4634-4534-9627-74f2477ae58f",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "86d7e043-1fe3-467c-900c-1eb5295f8858",
+            "class": "MoveCar",
             "extras": {}
         },
         {
@@ -1385,11 +1385,6 @@
             "extras": {}
         },
         {
-            "uuid": "0939d69b-9049-4dbf-be08-2bc52d1917fd",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "55d81fb4-8c46-48af-bb3a-d254ab827623",
             "class": "egret3d.MeshFilter",
             "mesh": {
@@ -1398,10 +1393,15 @@
             "extras": {}
         },
         {
+            "uuid": "cf03ce36-e245-4cbf-b71f-9646bc620519",
+            "class": "MoveCar",
+            "extras": {}
+        },
+        {
             "uuid": "96597fc5-d08d-4c02-9a95-6efb2ed3c923",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -172.5078156937283,
+                -184.5,
                 0,
                 0
             ],
@@ -1574,6 +1574,22 @@
             "class": "Splash",
             "target": {
                 "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba",
+                "class": "paper.GameObject"
+            },
+            "target1": {
+                "uuid": "42aa83f5-47e3-471d-8f81-2a75a5fd5fca",
+                "class": "paper.GameObject"
+            },
+            "target2": {
+                "uuid": "a663514f-6ebc-4fbe-aa6d-6b5f39aa0fd0",
+                "class": "paper.GameObject"
+            },
+            "target3": {
+                "uuid": "edbc526d-db07-4a3d-bdbd-97c1772a916c",
+                "class": "paper.GameObject"
+            },
+            "target4": {
+                "uuid": "21cc1711-2a97-41d5-80b1-8f1d62bc5477",
                 "class": "paper.GameObject"
             },
             "extras": {}

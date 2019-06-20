@@ -9,30 +9,36 @@ import HSWData from "./euiData/HSWData";
 
 export default class EuiRoot extends paper.Behaviour
 {
-    btn1_OnClick(e:egret.TouchEvent)
+    private m_gameStart:boolean = false;
+    private m_gameEnd:boolean = false;
+
+    private m_renderer:egret3d.Egret2DRenderer = null;
+
+    onAwake(config:any)
     {
-        
+        EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+        EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
     }
 
     onStart()
     {
         
-        const renderer = this.gameObject.getComponent(egret3d.Egret2DRenderer)!;
+        this.m_renderer = this.gameObject.getComponent(egret3d.Egret2DRenderer)!;
         const adapter = new egret3d.MatchWidthOrHeightAdapter();
         adapter.setResolution(egret3d.stage.size.w, egret3d.stage.size.h);
-        renderer.screenAdapter = adapter;
+        this.m_renderer.screenAdapter = adapter;
 
         const assetAdapter = new AssetAdapter();
         egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
         egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
 
-        const theme = new eui.Theme("resource/2d/default.thm.json", renderer.stage);
-        theme.addEventListener(eui.UIEvent.COMPLETE, onThemeLoadComplete, this);
+        const theme = new eui.Theme("resource/2d/default.thm.json", this.m_renderer.stage);
+        theme.addEventListener(eui.UIEvent.COMPLETE, ()=>{
 
-        function onThemeLoadComplete() {
+            // 当 theme 加载完成调用 开始加载控件， 
             
             const hswData = new HSWData();
-            renderer.root.addChild(hswData);
+            this.m_renderer.root.addChild(hswData);
             hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
 
                 console.log("showNotic");
@@ -43,13 +49,29 @@ export default class EuiRoot extends paper.Behaviour
             hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>{
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_click_scenc"]);
             }, null);
-        }
+
+            // 当所有控件加载完成结束
+            this.m_gameStart = true;
+            this.m_gameEnd = false;
+
+        }, this);
+
         
     }
 
-    onUpdate(delta:number)
+    OnGameStartTypeFunc(eventType:Events, items:any)
     {
+        
+    }
+    OnGameEndTypeFunc(eventType:Events, items:any)
+    {
+        
+    }
 
+    onDestroy()
+    {
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
     }
 }
 

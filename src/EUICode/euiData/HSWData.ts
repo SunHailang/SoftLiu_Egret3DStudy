@@ -21,11 +21,12 @@ export default class HSWData extends eui.Component implements eui.UICompo
         super();
     }
 
+    //一个UI Panel 有多少个控件 就会执行多少次 （每加载一个控件就会调用一次）
     protected partAdded(partName:string,instance:any):void
     {
         super.partAdded(partName,instance);
     }
-
+    // 当所有的控件加载完成 调用一次
     protected childrenCreated():void
     {
         super.childrenCreated();

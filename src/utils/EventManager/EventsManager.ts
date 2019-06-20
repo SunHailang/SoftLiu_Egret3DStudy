@@ -31,7 +31,6 @@ import DictionaryUtils from "../DictionaryUtils";
 
     public RegisterEvent(type:Events, action:(type:Events, items:any)=>void):void
     {
-        console.log("RegisterEvent: "+ type);
         if(this.dict.ContainsKey(type))
         {
             let values = this.dict.TryGetValue(type);

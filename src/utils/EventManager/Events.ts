@@ -8,7 +8,10 @@
 
  const enum Events
  {
+    OnEUILoadCompleteType,
+
     OnClickType,
+    OnPressType,
    
     OnGameStartType,
     OnGameEndType,

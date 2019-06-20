@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameEndData" width="640" height="1136" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Panel id="panel_GameEnd" left="0" right="0" top="0" bottom="0" touchEnabled="true">
+		<e:Group width="250" height="350" verticalCenter="-200" horizontalCenter="0">
+			<e:Image source="shop_3_png" fillMode="scale" right="0" anchorOffsetX="0" left="0" top="0" bottom="0" scale9Grid="15,15,15,15"/>
+			<e:Button id="Button_Result" label="Result" skinName="skins.ButtonSkin" width="125" horizontalCenter="0" verticalCenter="95"/>
+			<e:Label id="Label_Score" text="100分" textAlign="center" verticalAlign="middle" verticalCenter="-13" right="5" left="5"/>
+			<e:Label id="Label_Result" text="胜利" verticalAlign="middle" textAlign="center" verticalCenter="-103" left="10" right="10"/>
+		</e:Group>
+	</e:Panel>
+</e:Skin>
