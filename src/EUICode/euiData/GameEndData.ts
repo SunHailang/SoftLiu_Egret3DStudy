@@ -1,8 +1,19 @@
-
+/**
+ * 
+ * __author__ = "sun hai lang"
+ * __date__ = "2019-06-20"
+ * 
+ * 
+ */
 
 export default class GameEndData extends eui.Component implements eui.UIComponent 
 {
-    public constructor() 
+
+    public Button_Result:eui.Button;
+    public Label_Score:eui.Label;
+    public Label_Result:eui.Label;
+
+    public constructor()
     {
         super();
     }

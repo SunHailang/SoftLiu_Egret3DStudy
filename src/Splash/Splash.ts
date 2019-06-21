@@ -6,6 +6,8 @@
 
 import EventsManager from "../utils/EventManager/EventsManager";
 import CubeMove from "./CubeMove";
+import UserData from "../User/UserData";
+import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
 
 export default class Splash extends paper.Behaviour
 {
@@ -43,6 +45,7 @@ export default class Splash extends paper.Behaviour
 
     private m_gameEnd:boolean = false;
     private m_gameStart:boolean = false;
+    private m_gamePlay:boolean = false;
     // 默认索引要从1开始
     private m_moveIndex = 1;
 
@@ -54,12 +57,15 @@ export default class Splash extends paper.Behaviour
 
     private m_roadWidth = 5;
 
-    private m_initPosition:egret3d.Vector3;
+    private m_initEndPosition:egret3d.Vector3;
+    private m_initStartPosition:egret3d.Vector3;
+    private m_initDirection:egret3d.Vector3;
 
     onAwake()
     {
         EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
         EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+        EventsManager.getInstance().RegisterEvent(Events.OnGamePlayType, this.OnGamPlayTypeFunc.bind(this));
     }
     onStart()
     {
@@ -105,10 +111,13 @@ export default class Splash extends paper.Behaviour
             }
         }
         this.m_cubeMoveDis = this.m_cubeList.length * (this.m_cubeWidth + this.m_cubeGap) + this.m_cubeGap + this.m_roadWidth;
-        this.m_initPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
-                                    this.m_cubeList[0].transform.localPosition.y,
-                                    this.m_cubeList[0].transform.localPosition.z);
-        //this.test();
+        this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
+                                        this.m_cubeList[0].transform.localPosition.y,
+                                        this.m_cubeList[0].transform.localPosition.z);
+        this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
+                                        this.m_cubeList[0].transform.localPosition.y,
+                                        this.m_cubeList[0].transform.localPosition.z);
+        this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
     }
 
     onEnable()
@@ -128,26 +137,37 @@ export default class Splash extends paper.Behaviour
         {
             if(items[0] == "image_click_scenc")
             {
-                if(!this.m_gameStart) return;
+                if(!this.m_gamePlay) return;
                 if(this.m_moveIndex <= this.m_cubeList.length)
                 {
-                    console.log(this.m_moveIndex);
-                    let endPos = egret3d.Vector3.create(this.m_initPosition.x - ((this.m_cubeWidth + this.m_cubeGap) * (this.m_moveIndex - 1)), this.m_initPosition.y, this.m_initPosition.z);
-                    console.log(endPos);
-                    this.m_cubeList[this.m_moveIndex-1].OnMoveStart(this.m_moveIndex, endPos, (index:number)=>{
+                    let endPos = egret3d.Vector3.create(this.m_initEndPosition.x - ((this.m_cubeWidth + this.m_cubeGap) * (this.m_moveIndex - 1)), this.m_initEndPosition.y, this.m_initEndPosition.z);
+                    let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
+                    this.m_cubeList[this.m_moveIndex-1].OnMoveStart(this.m_moveIndex, endPos, dir, (index:number)=>
+                    {
+                        // Complete Cube Move to end target
                         if(index == this.m_cubeList.length)
                         {
                             // 说明所有Cube都已经移动完成了
                             console.log("move all cube finish.");
+                            let user:UserData = new UserData();
+                            user.score = 100;
+                            user.result = true;
+                            user.gems = 100;
+                            user.coins = 100;
+                            EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
                         }
                     });
                     this.m_moveIndex++;
                     if(this.m_moveIndex <= this.m_cubeList.length)
                     {
+                        let curIndex:number = 0;
                         for (let index = this.m_moveIndex - 1; index < this.m_cubeList.length; index++)
                         {
                             const element =  this.m_cubeList[index];
-                            element.OnMoveLocation(this.m_cubeWidth + this.m_cubeGap);
+                            let endPos:egret3d.Vector3 = egret3d.Vector3.create(this.m_initStartPosition.x - (this.m_cubeWidth + this.m_cubeGap) * curIndex, this.m_initStartPosition.y, this.m_initStartPosition.z);
+                            let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
+                            element.OnMoveLocation(endPos, dir);
+                            curIndex++;
                         }
                     }                    
                 }
@@ -158,24 +178,18 @@ export default class Splash extends paper.Behaviour
     {
         this.m_gameStart = true;
         this.m_gameEnd = false;
+        this.m_gamePlay = false;
         this.m_moveIndex = 1;
     }
     OnGameEndTypeFunc(eventType:Events, items:any)
     {
         this.m_gameEnd = true;
     }
-
-    onUpdate(delta:number)
+    OnGamPlayTypeFunc(eventType:Events, items:any)
     {
-        if(this.m_btnAPress)
-        {
-           
-        }
-        else
-        {
-
-        }
+        this.m_gamePlay = true;
     }
+
     //delay 等待延迟的时间参数  单位 毫秒
     async test(delay:number) {
         this.m_btnPressIndex++;
@@ -205,6 +219,7 @@ export default class Splash extends paper.Behaviour
     {
         EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
         EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnGamePlayType, this.OnGamPlayTypeFunc.bind(this));
     }
 
 }

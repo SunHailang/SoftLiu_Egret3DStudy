@@ -432,6 +432,11 @@
 			"name": "Assets/materials/grid_b.mat.json"
 		},
 		{
+			"url": "Assets/scenes/Collider.scene.json",
+			"type": "Scene",
+			"name": "Assets/scenes/Collider.scene.json"
+		},
+		{
 			"url": "Assets/scenes/Splash.scene.json",
 			"type": "Scene",
 			"name": "Assets/scenes/Splash.scene.json"

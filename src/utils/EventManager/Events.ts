@@ -14,5 +14,6 @@
     OnPressType,
    
     OnGameStartType,
+    OnGamePlayType,
     OnGameEndType,
  }

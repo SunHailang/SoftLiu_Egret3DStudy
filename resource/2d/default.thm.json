@@ -14,7 +14,8 @@
 		"eui.VSlider": "resource/2d/eui_skins/VSliderSkin.exml",
 		"eui.ItemRenderer": "resource/2d/eui_skins/ItemRendererSkin.exml",
 		"HSWData": "resource/2d/eui_skins/HSWDataSkin.exml",
-		"GameEndData":"resource/2d/eui_skins/GameEndDataSkin.exml"
+		"GameEndData":"resource/2d/eui_skins/GameEndDataSkin.exml",
+		"GameStartData":"resource/2d/eui_skins/GameStartDataSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -32,7 +33,8 @@
 		"resource/2d/eui_skins/ToggleSwitchSkin.exml",
 		"resource/2d/eui_skins/VScrollBarSkin.exml",
 		"resource/2d/eui_skins/VSliderSkin.exml",
-		"resource/2d/eui_skins/GameEndDataSkin.exml"
+		"resource/2d/eui_skins/GameEndDataSkin.exml",
+		"resource/2d/eui_skins/GameStartDataSkin.exml"
 	],
 	"path": "resource/2d/default.thm.json"
 }

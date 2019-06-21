@@ -1,3 +1,5 @@
+import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
+
 /**
  *  __author__ = "sun hai lang"
  *  __date__ = 2019-06-17
@@ -6,20 +8,17 @@
 
  export default class CubeMove extends paper.Behaviour
  {
-    m_canRotation:boolean = false;
+    private m_canRotation:boolean = false;
 
-    m_moveDir:number = 3.2;
+    private m_moveVelocity:number = 10;
 
-    m_endPostion:egret3d.Vector3;
-    m_isStatic = true;
+    private m_endPostion:egret3d.Vector3;
+    private m_moveDirection:egret3d.Vector3;
 
     private m_moveStart:boolean = false;
     private m_moveEnd:boolean = false;
 
-    private m_moveDis:number = 0;
-    private m_moveSumDis:number = 0;
-
-    private m_moveLocationDir:number = 2.8;
+    private m_moveLocationVelocity:number = 8;
     private m_moveLocationCan:boolean = false;
 
     private m_indexNum:number = 1;
@@ -27,35 +26,32 @@
     private m_initPostion:egret3d.Vector3;
 
     private m_moveFinish:(index:number)=>void = null;
+
+    private m_rgidbody:egret3d.oimo.Rigidbody;
     onStart()
     {
         this.m_canRotation = false;
         this.m_initPostion = egret3d.Vector3.create(this.transform.localPosition.x, 
                                     this.transform.localPosition.y, 
                                     this.transform.localPosition.z);
-        this.m_moveDis = 0;
         this.m_moveStart = false;
         this.m_endPostion = this.m_initPostion; 
         this.m_moveLocationCan = false;
+
+        this.m_rgidbody = this.gameObject.getComponent(egret3d.oimo.Rigidbody) as egret3d.oimo.Rigidbody;
     }
 
     onFixedUpdate(delta:number)
     {
         if(this.m_moveStart && !this.m_moveEnd)
-        {
-            this.m_moveDis += this.m_moveDir * delta;
-            this.transform.setLocalPosition(egret3d.Vector3.create(this.transform.localPosition.x + this.m_moveDir * delta, 
-                                                                this.transform.localPosition.y, 
-                                                                this.transform.localPosition.z));
-            
+        {            
             if(this.transform.localPosition.x >= this.m_endPostion.x)
             {
                 this.m_moveEnd = true;
                 this.m_moveStart = false;
-
-                this.transform.setLocalPosition(new egret3d.Vector3(this.m_endPostion.x, 
-                                    this.transform.localPosition.y, 
-                                    this.transform.localPosition.z));
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveVelocity * -1));
+                this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
+                this.transform.localPosition.update();
                 if(this.m_moveFinish)
                 {
                     this.m_moveFinish(this.m_indexNum);
@@ -64,56 +60,62 @@
         }
         if(this.m_moveLocationCan)
         {
-            this.m_moveDis += this.m_moveLocationDir * delta;
-            this.transform.setLocalPosition(egret3d.Vector3.create(this.m_initPostion.x + this.m_moveDis, 
-                                this.transform.localPosition.y, 
-                                this.transform.localPosition.z));
-
-            if( this.m_moveDis >= this.m_moveSumDis)
+            if(this.transform.localPosition.x >= this.m_endPostion.x)
             {
                 this.m_moveLocationCan = false;
-
-                this.transform.setLocalPosition(new egret3d.Vector3(this.m_initPostion.x + this.m_moveSumDis, 
-                                this.transform.localPosition.y, 
-                                this.transform.localPosition.z));
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveLocationVelocity * -1));
+                this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
+                this.transform.localPosition.update();
             }
         }
 
         if(this.m_canRotation)
         {
-            this.transform.setEulerAngles(new egret3d.Vector3(0,this.transform.localEulerAngles.y + 5*delta,0));
+            this.transform.setEulerAngles(new egret3d.Vector3(0,this.transform.localEulerAngles.y + 5 * delta,0));
         }
     }
 
-    public isStatic():boolean
-    {
-        return this.m_isStatic;
-    }
-
-    public OnMoveStart(index:number, endPos:egret3d.Vector3, finish:(index:number)=>void)
+    public OnMoveStart(index:number, endPos:egret3d.Vector3, dir:egret3d.Vector3, finish:(index:number)=>void)
     {
         this.m_endPostion = endPos;
+        this.m_moveDirection = dir;
         this.m_indexNum = index;
-        //this.m_moveSumDis = distence;
         this.m_moveFinish = finish;
 
-        this.m_initPostion = egret3d.Vector3.create(this.transform.localPosition.x, 
-                                        this.transform.localPosition.y, 
-                                        this.transform.localPosition.z);
-        this.m_moveDis = 0;
         this.m_moveLocationCan = false;
         this.m_moveStart = true;
         this.m_moveEnd = false;
+
+        if(this.m_rgidbody)
+        {            
+            if(!this.m_rgidbody.linearVelocity.equal(egret3d.Vector3.ZERO))
+            {
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+            }
+            console.log(this.m_rgidbody.linearVelocity);
+            this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveVelocity));
+        }
+
     }
 
-    public OnMoveLocation(dis:number)
+    public OnMoveLocation(endPos:egret3d.Vector3, dir:egret3d.Vector3)
     {
-        this.m_moveSumDis = dis;
-        this.m_initPostion = egret3d.Vector3.create(this.transform.localPosition.x,
-                        this.transform.localPosition.y, 
-                        this.transform.localPosition.z);
-        this.m_moveDis = 0;
+        this.m_endPostion = endPos;
+        this.m_moveDirection = dir;
+
         this.m_moveLocationCan = true;
+        this.m_moveStart = false;
+        this.m_moveEnd = false;
+
+        if(this.m_rgidbody)
+        {            
+            if(this.m_rgidbody.linearVelocity != egret3d.Vector3.ZERO)
+            {
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+            }
+            //console.log(this.m_rgidbody.linearVelocity);
+            this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveLocationVelocity));
+        }
     }
 
     public OnRotation(rotation:boolean)

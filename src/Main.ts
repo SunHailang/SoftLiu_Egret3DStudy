@@ -9,6 +9,9 @@ import EuiRoot from "./EUICode/EuiRoot";
 import CubeMove from "./Splash/CubeMove";
 import MoveCar from "./Splash/MoveCar";
 
+// Test code
+import SplashCollider from "./Collider/SplashCollider";
+
 async function main() {
     await RES.loadConfig("resource/default.res.json", "resource/");
     await RES.getResAsync('Asset/scenes/Splash.scene.json');
@@ -19,4 +22,7 @@ async function main() {
     EuiRoot;
     CubeMove;
     MoveCar;
+
+    //Test code
+    SplashCollider;
 }

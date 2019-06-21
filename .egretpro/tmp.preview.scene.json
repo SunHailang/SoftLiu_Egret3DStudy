@@ -181,10 +181,13 @@
                     "uuid": "82a47a3a-9ad3-44a4-98d2-347cb7f615bc"
                 },
                 {
-                    "uuid": "3cfffe09-a3f5-4126-b82a-d7ff66e09c1d"
+                    "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada"
                 },
                 {
-                    "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada"
+                    "uuid": "d0a68b08-a709-424e-a028-92cb7aa962c6"
+                },
+                {
+                    "uuid": "38ef0b5d-9dd7-4c4e-b7eb-beaa0a209c09"
                 },
                 {
                     "uuid": "e0c6de8c-1ce6-4450-9395-e4cdbaa37f37"
@@ -205,10 +208,13 @@
                     "uuid": "5b8ed74f-2092-41d6-b469-da91445e8c81"
                 },
                 {
-                    "uuid": "ddb5d1d8-2785-4694-98f4-b93a616d8e43"
+                    "uuid": "98e35f4f-f6e5-47ec-9b37-aac91eaf2572"
                 },
                 {
-                    "uuid": "98e35f4f-f6e5-47ec-9b37-aac91eaf2572"
+                    "uuid": "7fa74989-fa70-4e32-9001-f6d4e3a8b80a"
+                },
+                {
+                    "uuid": "301b1348-9514-43ff-9d7f-523b5bfa9405"
                 },
                 {
                     "uuid": "666e1fd5-0f3c-4791-a699-3c63006af72a"
@@ -229,10 +235,13 @@
                     "uuid": "52e82d28-8caf-404b-820a-b89ab9d31144"
                 },
                 {
-                    "uuid": "0080a4ae-e55b-45ac-895d-7ecb5549eb78"
+                    "uuid": "b8e7f824-2fe7-4c87-a2a8-75c0e424f6ed"
                 },
                 {
-                    "uuid": "b8e7f824-2fe7-4c87-a2a8-75c0e424f6ed"
+                    "uuid": "53d63c77-c660-4680-9716-6fa86ee989e2"
+                },
+                {
+                    "uuid": "7202962a-2292-4ad8-941d-66958aa457ab"
                 },
                 {
                     "uuid": "bdda21bc-49b1-45b3-ad46-91bbb96f24d2"
@@ -253,10 +262,13 @@
                     "uuid": "53540029-84eb-4834-aff8-80fce2ae294a"
                 },
                 {
-                    "uuid": "8d0777c8-ef9c-4f39-82c5-a0151eed51b7"
+                    "uuid": "7210ac01-1cdd-4ee8-ba18-6bc90b72ced3"
                 },
                 {
-                    "uuid": "7210ac01-1cdd-4ee8-ba18-6bc90b72ced3"
+                    "uuid": "55e73f9c-65a6-489b-b406-11acafac565d"
+                },
+                {
+                    "uuid": "ef5c4b24-d258-4e9e-9a40-42fb2808ecec"
                 },
                 {
                     "uuid": "6b994a9a-9f6a-4426-a8b3-266dc45c361a"
@@ -281,6 +293,12 @@
                 },
                 {
                     "uuid": "91a7dce6-cfda-4fb7-b02c-959ba91da461"
+                },
+                {
+                    "uuid": "f58e0c9f-282c-4c7d-af7f-c7aaed749a31"
+                },
+                {
+                    "uuid": "0b83944b-f5e9-4676-8da3-c4deb5aaadec"
                 },
                 {
                     "uuid": "5666f39f-0c25-4896-806e-dc7a595d8da3"
@@ -695,15 +713,15 @@
             "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -227.43215576545362,
-                21.31783845098554,
-                0.30999999999999794
+                -224.89749598745925,
+                20.92918904867825,
+                -8.202904177143454
             ],
             "_localRotation": [
-                0.3265055756219769,
-                0.62721137512625,
-                -0.32650557562197685,
-                0.62721137512625
+                0.3957958124096177,
+                0.4568443519444745,
+                -0.23781811685295903,
+                0.760316681568908
             ],
             "extras": {}
         },
@@ -779,16 +797,34 @@
             "extras": {}
         },
         {
-            "uuid": "3cfffe09-a3f5-4126-b82a-d7ff66e09c1d",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "2b292d12-f4d1-488a-b9ea-4ba45d28fada",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "d0a68b08-a709-424e-a028-92cb7aa962c6",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "38ef0b5d-9dd7-4c4e-b7eb-beaa0a209c09",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
             "extras": {}
         },
         {
@@ -817,16 +853,34 @@
             "extras": {}
         },
         {
-            "uuid": "ddb5d1d8-2785-4694-98f4-b93a616d8e43",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "98e35f4f-f6e5-47ec-9b37-aac91eaf2572",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "7fa74989-fa70-4e32-9001-f6d4e3a8b80a",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "301b1348-9514-43ff-9d7f-523b5bfa9405",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
             "extras": {}
         },
         {
@@ -855,16 +909,34 @@
             "extras": {}
         },
         {
-            "uuid": "0080a4ae-e55b-45ac-895d-7ecb5549eb78",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "b8e7f824-2fe7-4c87-a2a8-75c0e424f6ed",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "53d63c77-c660-4680-9716-6fa86ee989e2",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "7202962a-2292-4ad8-941d-66958aa457ab",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
             "extras": {}
         },
         {
@@ -893,16 +965,34 @@
             "extras": {}
         },
         {
-            "uuid": "8d0777c8-ef9c-4f39-82c5-a0151eed51b7",
-            "class": "egret3d.BoxCollider",
-            "extras": {}
-        },
-        {
             "uuid": "7210ac01-1cdd-4ee8-ba18-6bc90b72ced3",
             "class": "egret3d.MeshFilter",
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "55e73f9c-65a6-489b-b406-11acafac565d",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "ef5c4b24-d258-4e9e-9a40-42fb2808ecec",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
             "extras": {}
         },
         {
@@ -941,6 +1031,29 @@
             "mesh": {
                 "asset": 1
             },
+            "extras": {}
+        },
+        {
+            "uuid": "f58e0c9f-282c-4c7d-af7f-c7aaed749a31",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "0b83944b-f5e9-4676-8da3-c4deb5aaadec",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
             "extras": {}
         },
         {

@@ -1,5 +1,8 @@
 import EventsManager from "../utils/EventManager/EventsManager";
 import HSWData from "./euiData/HSWData";
+import UserData from "../User/UserData";
+import GameEndData from "./euiData/GameEndData";
+import GameStartData from "./euiData/GameStartData";
 
 /**
  *  __author__ = "sun hai lang"
@@ -13,6 +16,9 @@ export default class EuiRoot extends paper.Behaviour
     private m_gameEnd:boolean = false;
 
     private m_renderer:egret3d.Egret2DRenderer = null;
+
+    private m_init:boolean = false;
+    private m_euiComplete:boolean = false;
 
     onAwake(config:any)
     {
@@ -37,7 +43,7 @@ export default class EuiRoot extends paper.Behaviour
 
             // 当 theme 加载完成调用 开始加载控件， 
             
-            const hswData = new HSWData();
+            let hswData = new HSWData();
             this.m_renderer.root.addChild(hswData);
             hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
 
@@ -50,22 +56,61 @@ export default class EuiRoot extends paper.Behaviour
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_click_scenc"]);
             }, null);
 
+            
+
             // 当所有控件加载完成结束
-            EventsManager.getInstance().TriggerEvent(Events.OnGameStartType, null);
+            this.m_euiComplete = true;
 
         }, this);
-
         
+    }
+
+    onLateUpdate(delta:number)
+    {
+        if(!this.m_init && this.m_euiComplete)
+        {
+            this.m_init = true;
+            EventsManager.getInstance().TriggerEvent(Events.OnGameStartType, null);
+        }
     }
 
     OnGameStartTypeFunc(eventType:Events, items:any)
     {
+        let start:GameStartData = new GameStartData();
+        this.m_renderer.root.addChild(start);        
+        start.m_btnPlay.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
+        {
+            this.m_renderer.root.removeChild(start);
+            EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, []);
+        }, null);
+        
         this.m_gameStart = true;
         this.m_gameEnd = false;
     }
     OnGameEndTypeFunc(eventType:Events, items:any)
     {
-        
+        let user:UserData = items[0] as UserData;
+        if(user)
+        {
+            console.log(user);
+            let end:GameEndData = new GameEndData();
+            this.m_renderer.root.addChild(end);
+            end.Label_Score.text = user.score + "分";
+            if(user.result)
+            {
+                end.Label_Result.text = "胜利";
+            }
+            else
+            {
+                end.Label_Result.text = "失败";
+            }
+            
+            end.Button_Result.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
+            {
+                this.m_renderer.root.removeChild(end);
+                EventsManager.getInstance().TriggerEvent(Events.OnGameStartType, []);
+            }, null);
+        }
     }
 
     onDestroy()

@@ -13,17 +13,19 @@ import EventsManager from "../utils/EventManager/EventsManager";
     @paper.serializedField
     public m_moveSpeed:number = 3;
 
-
+     
      private m_moveEnd:number = 23;
 
      private m_moveStart:number = -23;
 
+     private m_gameStart:boolean = false;
      private m_gameEnd:boolean = false;
 
 
      onAwake(config:any)
      {
         EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+        EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
      }
 
      onStart()
@@ -32,6 +34,10 @@ import EventsManager from "../utils/EventManager/EventsManager";
         {
             this.m_moveSpeed = 5;
         }
+
+        //let rig:egret3d.oimo.Rigidbody = this.gameObject.getComponent(egret3d.oimo.Rigidbody);
+        //rig.applyForce(egret3d.Vector3.create(0,0,-100), egret3d.Vector3.BACK);
+        //rig.applyLinearImpulse(egret3d.Vector3.create(0,0,-3));
      }
 
      onFixedUpdate(delta:number)
@@ -67,12 +73,20 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
      private OnGameEndTypeFunc(eventType:Events, items:any)
      {
+        this.m_gameStart = false;
         this.m_gameEnd = true;
+     }
+
+     private OnGameStartTypeFunc(eventType:Events, items:any)
+     {
+        this.m_gameStart = true;
+        this.m_gameEnd = false;
      }
 
      onDestroy()
      {
         EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
      }
     
  }
