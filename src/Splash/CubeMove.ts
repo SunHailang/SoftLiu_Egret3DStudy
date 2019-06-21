@@ -49,7 +49,7 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
             {
                 this.m_moveEnd = true;
                 this.m_moveStart = false;
-                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveVelocity * -1));
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
                 this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
                 this.transform.localPosition.update();
                 if(this.m_moveFinish)
@@ -63,7 +63,7 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
             if(this.transform.localPosition.x >= this.m_endPostion.x)
             {
                 this.m_moveLocationCan = false;
-                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveLocationVelocity * -1));
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
                 this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
                 this.transform.localPosition.update();
             }
