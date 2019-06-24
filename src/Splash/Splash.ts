@@ -8,6 +8,7 @@ import EventsManager from "../utils/EventManager/EventsManager";
 import CubeMove from "./CubeMove";
 import UserData from "../User/UserData";
 import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
+import CameraMove from "./CameraMove";
 
 export default class Splash extends paper.Behaviour
 {
@@ -20,6 +21,10 @@ export default class Splash extends paper.Behaviour
     public rotateSpeed: number = 0.5;
     @paper.editor.property(paper.editor.EditType.VECTOR3)
     public readonly lookAtPoint: egret3d.Vector3 = egret3d.Vector3.create();
+
+    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
+    @paper.serializedField
+    private m_camera:paper.GameObject | null;
 	
 	@paper.editor.property(paper.editor.EditType.GAMEOBJECT)
     @paper.serializedField
@@ -60,6 +65,8 @@ export default class Splash extends paper.Behaviour
     private m_initEndPosition:egret3d.Vector3;
     private m_initStartPosition:egret3d.Vector3;
     private m_initDirection:egret3d.Vector3;
+
+    private m_cameraMove:CameraMove;
 
     onAwake()
     {
@@ -118,6 +125,8 @@ export default class Splash extends paper.Behaviour
                                         this.m_cubeList[0].transform.localPosition.y,
                                         this.m_cubeList[0].transform.localPosition.z);
         this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
+
+        this.m_cameraMove = this.m_camera.getComponent(CameraMove)! as CameraMove;
     }
 
     onEnable()
@@ -132,6 +141,7 @@ export default class Splash extends paper.Behaviour
 
     OnOnClickType(eventType:Events, items:any)
     {
+
         if(this.m_gameEnd) return;
         if(items.length > 0)
         {
@@ -149,12 +159,33 @@ export default class Splash extends paper.Behaviour
                         {
                             // 说明所有Cube都已经移动完成了
                             console.log("move all cube finish.");
+                            if(this.m_cameraMove)
+                            {
+                                this.m_cameraMove.CanMove(true, 13, ()=>{
+
+                                    console.log("camera move complete.");
+                                    this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
+                                                this.m_cubeList[0].transform.localPosition.y,
+                                                this.m_cubeList[0].transform.localPosition.z);
+                                    this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
+                                                this.m_cubeList[0].transform.localPosition.y,
+                                                this.m_cubeList[0].transform.localPosition.z);
+
+                                    EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, ["Camera Play"]);
+                                });
+                            }
+                            else
+                            {
+                                console.log("Move Camera is null.");
+                            }
+                            /*
                             let user:UserData = new UserData();
                             user.score = 100;
                             user.result = true;
                             user.gems = 100;
                             user.coins = 100;
                             EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
+                            */
                         }
                     });
                     this.m_moveIndex++;
@@ -187,7 +218,22 @@ export default class Splash extends paper.Behaviour
     }
     OnGamPlayTypeFunc(eventType:Events, items:any)
     {
-        this.m_gamePlay = true;
+        if(items.length > 0)
+        {
+            switch(items[0])
+            {
+                case "Camera Play":
+                    this.m_gamePlay = true;
+                    this.m_gameStart = true;
+                    this.m_gameEnd = false;
+                    this.m_moveIndex = 1;
+                break;
+            }            
+        }
+        else
+        {
+            this.m_gamePlay = true;
+        }        
     }
 
     //delay 等待延迟的时间参数  单位 毫秒

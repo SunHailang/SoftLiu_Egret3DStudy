@@ -8,9 +8,11 @@ import Splash from "./Splash/Splash";
 import EuiRoot from "./EUICode/EuiRoot";
 import CubeMove from "./Splash/CubeMove";
 import MoveCar from "./Splash/MoveCar";
+import CameraMove from "./Splash/CameraMove";
 
 // Test code
 import SplashCollider from "./Collider/SplashCollider";
+import ColliderEuiRoot from "./Collider/ColliderEuiRoot";
 
 async function main() {
     await RES.loadConfig("resource/default.res.json", "resource/");
@@ -22,7 +24,9 @@ async function main() {
     EuiRoot;
     CubeMove;
     MoveCar;
+    CameraMove;
 
     //Test code
     SplashCollider;
+    ColliderEuiRoot;
 }

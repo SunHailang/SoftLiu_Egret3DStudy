@@ -432,6 +432,26 @@
 			"name": "Assets/materials/grid_b.mat.json"
 		},
 		{
+			"url": "Assets/materials/Red.mat.json",
+			"type": "Material",
+			"name": "Assets/materials/Red.mat.json"
+		},
+		{
+			"url": "Assets/materials/Yellow.mat.json",
+			"type": "Material",
+			"name": "Assets/materials/Yellow.mat.json"
+		},
+		{
+			"url": "Assets/prefab/playerPrefab/one.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/playerPrefab/one.prefab.json"
+		},
+		{
+			"url": "Assets/red.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/red.prefab.json"
+		},
+		{
 			"url": "Assets/scenes/Collider.scene.json",
 			"type": "Scene",
 			"name": "Assets/scenes/Collider.scene.json"
@@ -470,6 +490,36 @@
 			"url": "Assets/textures/grid_b.png",
 			"type": "Texture",
 			"name": "Assets/textures/grid_b.png"
+		},
+		{
+			"url": "Assets/textures/shop_3.image.json",
+			"type": "TextureDesc",
+			"name": "Assets/textures/shop_3.image.json"
+		},
+		{
+			"url": "Assets/textures/shop_3.png",
+			"type": "Texture",
+			"name": "Assets/textures/shop_3.png"
+		},
+		{
+			"url": "Assets/yellow.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/yellow.prefab.json"
+		},
+		{
+			"url": "Library/Cube.mesh.bin",
+			"type": "Mesh",
+			"name": "Library/Cube.mesh.bin"
+		},
+		{
+			"url": "Library/Default_Particle.image.json",
+			"type": "TextureDesc",
+			"name": "Library/Default_Particle.image.json"
+		},
+		{
+			"url": "Library/Default_Particle.png",
+			"type": "Texture",
+			"name": "Library/Default_Particle.png"
 		}
 	]
 }

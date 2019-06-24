@@ -50,8 +50,6 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
                 this.m_moveEnd = true;
                 this.m_moveStart = false;
                 this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
-                this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
-                this.transform.localPosition.update();
                 if(this.m_moveFinish)
                 {
                     this.m_moveFinish(this.m_indexNum);
@@ -64,8 +62,6 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
             {
                 this.m_moveLocationCan = false;
                 this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
-                this.transform.setLocalPosition(egret3d.Vector3.create(this.m_endPostion.x, this.m_endPostion.y, this.m_endPostion.z));
-                this.transform.localPosition.update();
             }
         }
 
@@ -92,7 +88,7 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
             {
                 this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
             }
-            console.log(this.m_rgidbody.linearVelocity);
+            //console.log(this.m_rgidbody.linearVelocity);
             this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveVelocity));
         }
 
@@ -112,9 +108,10 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
             if(this.m_rgidbody.linearVelocity != egret3d.Vector3.ZERO)
             {
                 this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
-            }
-            //console.log(this.m_rgidbody.linearVelocity);
-            this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveLocationVelocity));
+            }            
+            let locationV = Vector3Utils.multiplyScalar(this.m_moveDirection, this.m_moveLocationVelocity);
+            //console.log(locationV);
+            this.m_rgidbody.addLinearVelocity(locationV);
         }
     }
 

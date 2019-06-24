@@ -1,0 +1,60 @@
+{
+    "version": "5",
+    "assets": [
+        "Library/Cube.mesh.bin"
+    ],
+    "objects": [
+        {
+            "uuid": "1",
+            "class": "paper.GameObject",
+            "name": "red",
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "5"
+                },
+                {
+                    "uuid": "2"
+                },
+                {
+                    "uuid": "4"
+                },
+                {
+                    "uuid": "3"
+                }
+            ]
+        }
+    ],
+    "components": [
+        {
+            "uuid": "5",
+            "class": "egret3d.MeshRenderer",
+            "_lightmapScaleOffset": [
+                1,
+                1,
+                0,
+                0
+            ],
+            "_receiveShadows": true,
+            "_castShadows": true,
+            "materials": [
+                null
+            ]
+        },
+        {
+            "uuid": "2",
+            "class": "egret3d.Transform"
+        },
+        {
+            "uuid": "4",
+            "class": "egret3d.BoxCollider"
+        },
+        {
+            "uuid": "3",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 0
+            }
+        }
+    ]
+}

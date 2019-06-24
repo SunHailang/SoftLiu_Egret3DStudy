@@ -16,4 +16,8 @@
     OnGameStartType,
     OnGamePlayType,
     OnGameEndType,
+
+
+    //Collider Test
+    OnColliderTestType,
  }

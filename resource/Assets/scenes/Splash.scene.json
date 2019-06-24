@@ -134,6 +134,9 @@
                 },
                 {
                     "uuid": "3356faf6-ae75-4c74-b007-b8a88d46a9c0"
+                },
+                {
+                    "uuid": "30479722-e89d-47af-8820-950a3fd15cc6"
                 }
             ]
         },
@@ -350,6 +353,12 @@
                 },
                 {
                     "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa"
+                },
+                {
+                    "uuid": "0ca0a1d4-9eab-4e52-833e-ce59966b9046"
+                },
+                {
+                    "uuid": "d2f40a09-3bf3-4bd2-b556-c74e77140e90"
                 }
             ]
         },
@@ -731,6 +740,11 @@
             "bufferMask": 1280,
             "cullingMask": 1,
             "fov": 0.8,
+            "extras": {}
+        },
+        {
+            "uuid": "30479722-e89d-47af-8820-950a3fd15cc6",
+            "class": "CameraMove",
             "extras": {}
         },
         {
@@ -1144,6 +1158,23 @@
             "mesh": {
                 "asset": 5
             },
+            "extras": {}
+        },
+        {
+            "uuid": "0ca0a1d4-9eab-4e52-833e-ce59966b9046",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                1,
+                1,
+                1,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "d2f40a09-3bf3-4bd2-b556-c74e77140e90",
+            "class": "egret3d.oimo.BoxCollider",
             "extras": {}
         },
         {
@@ -1685,6 +1716,10 @@
         {
             "uuid": "cfab0fa7-ced5-45e4-9c8a-ae34b09aee13",
             "class": "Splash",
+            "m_camera": {
+                "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13",
+                "class": "paper.GameObject"
+            },
             "target": {
                 "uuid": "72229757-92b1-4bcf-9ae4-c52042e74fba",
                 "class": "paper.GameObject"
