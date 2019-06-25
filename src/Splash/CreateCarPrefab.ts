@@ -31,7 +31,7 @@ export default class CreateCarPrefab extends paper.Behaviour
         this.m_carName.push("red");
         this.m_activityScreen = paper.Application.sceneManager.getActiveScene();
         //Math.random()
-        this.CreateCar(1000);
+        this.CreateCar(3000);
     }
 
     //delay 等待延迟的时间参数  单位 毫秒

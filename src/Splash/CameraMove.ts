@@ -12,6 +12,8 @@ import EventsManager from "../utils/EventManager/EventsManager";
     private m_canMove:boolean = false;
     private m_moveSumDis:number = 0;
 
+    private m_moveSpeed:number = 1.5;
+
     private m_onFinish:()=>void;
 
     private m_moveDis:number = 0;
@@ -38,8 +40,8 @@ import EventsManager from "../utils/EventManager/EventsManager";
 
         if(this.m_canMove)
         {
-            this.m_moveDis += delta;
-            this.transform.setPosition(egret3d.Vector3.create(this.transform.position.x + delta, this.transform.position.y, this.transform.position.z));
+            this.m_moveDis += this.m_moveSpeed * delta;
+            this.transform.setPosition(egret3d.Vector3.create(this.transform.position.x + this.m_moveSpeed * delta, this.transform.position.y, this.transform.position.z));
             if(this.m_moveDis >= this.m_moveSumDis)
             {
                 this.m_canMove = false;

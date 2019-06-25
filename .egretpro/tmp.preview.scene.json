@@ -1,11 +1,12 @@
 {
     "version": "5",
     "assets": [
+        "Assets/materials/Yellow.mat.json",
+        "builtin/cube.mesh.bin",
         "Assets/materials/grid_a.mat.json",
         "Assets/materials/grid_b.mat.json",
         "builtin/plane.mesh.bin",
-        "Assets/materials/blue.mat.json",
-        "builtin/cube.mesh.bin"
+        "Assets/materials/blue.mat.json"
     ],
     "objects": [
         {
@@ -22,6 +23,9 @@
                 },
                 {
                     "uuid": "218d7980-85c3-4137-ba32-4b7264da4504"
+                },
+                {
+                    "uuid": "a242066d-c560-4e55-9242-7730acd5739f"
                 },
                 {
                     "uuid": "5860b1f8-9046-4348-b9d3-91086103255a"
@@ -136,6 +140,33 @@
                 },
                 {
                     "uuid": "1200f9ab-e4b8-453b-9059-a4576979b1fd"
+                }
+            ]
+        },
+        {
+            "uuid": "a242066d-c560-4e55-9242-7730acd5739f",
+            "class": "paper.GameObject",
+            "name": "target_cube",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "224fba92-2e96-4e12-831a-08d9345179f7"
+                },
+                {
+                    "uuid": "bcd94e5e-62ec-4395-b9f7-7f99f56718e9"
+                },
+                {
+                    "uuid": "860e1ab6-a4e7-48e3-9b1e-294ed62b3923"
+                },
+                {
+                    "uuid": "6fa50a19-cfad-44c6-895d-12ca7a6e28cc"
+                },
+                {
+                    "uuid": "14e5c1e4-bad9-42fe-8c76-83a304cf279d"
+                },
+                {
+                    "uuid": "ba83d0d0-2a42-488c-a166-b376a6f33c36"
                 }
             ]
         },
@@ -410,6 +441,67 @@
                 0,
                 0
             ],
+            "children": [
+                {
+                    "uuid": "bcd94e5e-62ec-4395-b9f7-7f99f56718e9"
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "224fba92-2e96-4e12-831a-08d9345179f7",
+            "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 0
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "bcd94e5e-62ec-4395-b9f7-7f99f56718e9",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                14,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "860e1ab6-a4e7-48e3-9b1e-294ed62b3923",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 1
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "6fa50a19-cfad-44c6-895d-12ca7a6e28cc",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                0,
+                1,
+                0,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "14e5c1e4-bad9-42fe-8c76-83a304cf279d",
+            "class": "egret3d.oimo.BoxCollider",
+            "_values": [
+                1,
+                0,
+                0.20000000298023224,
+                1
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "ba83d0d0-2a42-488c-a166-b376a6f33c36",
+            "class": "CubeMove",
             "extras": {}
         },
         {
@@ -417,6 +509,10 @@
             "class": "Splash",
             "m_camera": {
                 "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13",
+                "class": "paper.GameObject"
+            },
+            "m_target": {
+                "uuid": "a242066d-c560-4e55-9242-7730acd5739f",
                 "class": "paper.GameObject"
             },
             "extras": {}
@@ -479,10 +575,10 @@
             "class": "egret3d.MeshRenderer",
             "materials": [
                 {
-                    "asset": 0
+                    "asset": 2
                 },
                 {
-                    "asset": 1
+                    "asset": 3
                 }
             ],
             "extras": {}
@@ -507,7 +603,7 @@
             "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 2
+                "asset": 4
             },
             "extras": {}
         },
@@ -554,7 +650,7 @@
             "class": "egret3d.MeshRenderer",
             "materials": [
                 {
-                    "asset": 3
+                    "asset": 5
                 }
             ],
             "extras": {}
@@ -578,7 +674,7 @@
             "uuid": "76a70f58-5a0d-43ba-af12-7e3fbc673706",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 4
+                "asset": 1
             },
             "extras": {}
         },
@@ -617,7 +713,7 @@
             "uuid": "20941f18-e4c4-4f24-9bc5-b67708c28846",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -197,
+                -195.5,
                 0,
                 0
             ],
@@ -636,7 +732,7 @@
             "class": "egret3d.MeshRenderer",
             "materials": [
                 {
-                    "asset": 3
+                    "asset": 5
                 }
             ],
             "extras": {}
@@ -660,7 +756,7 @@
             "uuid": "3904331e-5bb0-47f8-8473-bf0f675265b0",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 4
+                "asset": 1
             },
             "extras": {}
         },
@@ -684,7 +780,7 @@
             "uuid": "96597fc5-d08d-4c02-9a95-6efb2ed3c923",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -184.5,
+                -181,
                 0,
                 0
             ],
@@ -706,7 +802,7 @@
             "class": "egret3d.MeshRenderer",
             "materials": [
                 {
-                    "asset": 3
+                    "asset": 5
                 }
             ],
             "extras": {}
@@ -730,7 +826,7 @@
             "uuid": "3cd5ade1-55be-43f6-9db9-5f9b5b55ac50",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 4
+                "asset": 1
             },
             "extras": {}
         },

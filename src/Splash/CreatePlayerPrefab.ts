@@ -76,7 +76,7 @@ import CubeMove from "./CubeMove";
                             }
                             this.m_playerMove.push(palyer);
                             index++;
-                            console.log("Create Player Complete");
+                            //console.log("Create Player Complete");
                             if(index >= this.m_palyerName.length)
                             {
                                 EventsManager.getInstance().TriggerEvent(Events.OnResPlayerCompleteType, [this.m_playerMove]);

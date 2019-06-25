@@ -25,6 +25,9 @@ export default class Splash extends paper.Behaviour
     @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
     @paper.serializedField
     private m_camera:paper.GameObject | null;
+    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
+    @paper.serializedField
+    private m_target:paper.GameObject | null;
 
     m_cubeList:CubeMove[] = [];
 
@@ -51,6 +54,9 @@ export default class Splash extends paper.Behaviour
     private m_initDirection:egret3d.Vector3;
 
     private m_cameraMove:CameraMove;
+
+    private m_levelIndex:number = 0;
+    private m_levelInfo:boolean[] = [false, true, false];
 
     onAwake()
     {
@@ -89,25 +95,29 @@ export default class Splash extends paper.Behaviour
                 {
                     let endPos = egret3d.Vector3.create(this.m_initEndPosition.x - ((this.m_cubeWidth + this.m_cubeGap) * (this.m_moveIndex - 1)), this.m_initEndPosition.y, this.m_initEndPosition.z);
                     let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
-                    this.m_cubeList[this.m_moveIndex-1].OnMoveStart(this.m_moveIndex, endPos, dir, (index:number)=>
+                    //console.log(this.m_cubeList[this.m_moveIndex-1]);
+                    this.m_cubeList[this.m_moveIndex-1].OnMoveStart(endPos, dir, (index:number)=>
                     {
                         // Complete Cube Move to end target
-                        if(index == this.m_cubeList.length)
+                        if(index == this.m_cubeList[this.m_cubeList.length - 1].m_indexNum)
                         {
                             // 说明所有Cube都已经移动完成了
                             console.log("move all cube finish.");
+                            this.m_levelIndex++;
+                            this.InitPlayerMoveInfo();
                             if(this.m_cameraMove)
                             {
                                 this.m_cameraMove.CanMove(true, 13, ()=>{
 
-                                    console.log("camera move complete.");
-                                    this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
-                                                this.m_cubeList[0].transform.localPosition.y,
-                                                this.m_cubeList[0].transform.localPosition.z);
-                                    this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
-                                                this.m_cubeList[0].transform.localPosition.y,
-                                                this.m_cubeList[0].transform.localPosition.z);
+                                    console.log("camera move complete."); 
 
+                                    //this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
+                                                //this.m_cubeList[0].transform.localPosition.y,
+                                                //this.m_cubeList[0].transform.localPosition.z);
+                                    //this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
+                                                //this.m_cubeList[0].transform.localPosition.y,
+                                                //this.m_cubeList[0].transform.localPosition.z);
+                                    
                                     EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, ["Camera Play"]);
                                 });
                             }
@@ -143,20 +153,50 @@ export default class Splash extends paper.Behaviour
         }
     }
 
+    private InitPlayerMoveInfo()
+    {
+        if(this.m_levelIndex < this.m_levelInfo.length && this.m_levelInfo[this.m_levelIndex])
+        {
+            let target = this.m_target.getComponent(CubeMove) as CubeMove;
+            if(target)
+            {
+                console
+                target.OnInitCube(this.m_cubeList[0].m_indexNum - 1, true);
+                this.m_cubeList.push(target);
+            }
+        }
+        this.m_cubeList.sort((a:CubeMove, b:CubeMove):number=>
+        {
+            if(b.m_indexNum > a.m_indexNum)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        });
+        this.m_cubeMoveDis = this.m_cubeList.length * (this.m_cubeWidth + this.m_cubeGap) + this.m_cubeGap + this.m_roadWidth;
+        this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
+                                        this.m_cubeList[0].transform.localPosition.y,
+                                        this.m_cubeList[0].transform.localPosition.z);
+        this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
+                                        this.m_cubeList[0].transform.localPosition.y,
+                                        this.m_cubeList[0].transform.localPosition.z);
+        this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
+    }
+
     OnResPlayerCompleteTypeFunc(eventType:Events, items:any)
     {
         this.m_cubeList = items[0];
-        console.log(this.m_cubeList);
+        this.m_levelIndex = 0;
+        //console.log(this.m_cubeList);
         if(this.m_cubeList && this.m_cubeList.length > 0)
+        {            
+            this.InitPlayerMoveInfo();
+        }else
         {
-            this.m_cubeMoveDis = this.m_cubeList.length * (this.m_cubeWidth + this.m_cubeGap) + this.m_cubeGap + this.m_roadWidth;
-            this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
-                                            this.m_cubeList[0].transform.localPosition.y,
-                                            this.m_cubeList[0].transform.localPosition.z);
-            this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
-                                            this.m_cubeList[0].transform.localPosition.y,
-                                            this.m_cubeList[0].transform.localPosition.z);
-            this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
+            console.log("add player list error.")
         }
     }
 
@@ -173,6 +213,7 @@ export default class Splash extends paper.Behaviour
     }
     OnGamPlayTypeFunc(eventType:Events, items:any)
     {
+        //this.m_levelIndex = 0;
         if(items.length > 0)
         {
             switch(items[0])
@@ -183,7 +224,7 @@ export default class Splash extends paper.Behaviour
                     this.m_gameEnd = false;
                     this.m_moveIndex = 1;
                 break;
-            }            
+            }
         }
         else
         {
