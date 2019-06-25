@@ -1,4 +1,6 @@
 import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
+import EventsManager from "../utils/EventManager/EventsManager";
+import UserData from "../User/UserData";
 
 /**
  *  __author__ = "sun hai lang"
@@ -15,6 +17,7 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
     private m_endPostion:egret3d.Vector3;
     private m_moveDirection:egret3d.Vector3;
 
+    private m_moveAllow:boolean = false;
     private m_moveStart:boolean = false;
     private m_moveEnd:boolean = false;
 
@@ -28,6 +31,16 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
     private m_moveFinish:(index:number)=>void = null;
 
     private m_rgidbody:egret3d.oimo.Rigidbody;
+
+    private m_gameStart:boolean = false;
+    private m_gameEnd:boolean = true;
+
+    onAwake(config:any)
+   {
+      EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+      EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+   }
+
     onStart()
     {
         this.m_canRotation = false;
@@ -39,6 +52,11 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
         this.m_moveLocationCan = false;
 
         this.m_rgidbody = this.gameObject.getComponent(egret3d.oimo.Rigidbody) as egret3d.oimo.Rigidbody;
+    }
+
+    public OnInitCube(index:number, allow:boolean)
+    {
+        this.m_moveAllow = allow;
     }
 
     onFixedUpdate(delta:number)
@@ -73,6 +91,8 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
 
     public OnMoveStart(index:number, endPos:egret3d.Vector3, dir:egret3d.Vector3, finish:(index:number)=>void)
     {
+        if(!this.m_moveAllow) return;
+
         this.m_endPostion = endPos;
         this.m_moveDirection = dir;
         this.m_indexNum = index;
@@ -96,6 +116,8 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
 
     public OnMoveLocation(endPos:egret3d.Vector3, dir:egret3d.Vector3)
     {
+        if(!this.m_moveAllow) return;
+
         this.m_endPostion = endPos;
         this.m_moveDirection = dir;
 
@@ -119,4 +141,63 @@ import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
     {
         this.m_canRotation = rotation;
     }
+
+    onCollisionEnter(collider:any)
+    {
+        let box = collider as egret3d.oimo.BoxCollider;        
+        if(box)
+        {
+            //console.log(box.gameObject);
+            if(box.gameObject.tag == "EditorCar")
+            {
+                //生成用户数据
+                let user = new UserData();
+                user.coins =100;
+                user.gems = 100;
+                user.result = false;
+                user.score = 100;
+                EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
+            }
+            else
+            {                
+                console.log("onCollisionEnter obj tag : " + box.gameObject.tag);
+            }
+        }
+        else
+        {
+            console.log("onCollisionEnter obj is null.");
+        }
+    }
+
+    private OnGameEndTypeFunc(eventType:Events, items:any)
+    {
+        this.m_gameStart = false;
+        this.m_gameEnd = true;
+        if(this.m_rgidbody && !this.m_rgidbody.linearVelocity.equal(egret3d.Vector3.ZERO))
+        {
+            this.m_rgidbody.type = egret3d.oimo.RigidbodyType.Kinematic;
+            //this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+        }
+    }
+
+     private OnGameStartTypeFunc(eventType:Events, items:any)
+     {
+        this.m_gameStart = true;
+        this.m_gameEnd = false;
+        if(this.gameObject)
+        {
+            this.gameObject.destroy();
+        }
+     }
+
+     onDestroy()
+     {
+        if(this.m_rgidbody)
+        {
+            this.m_rgidbody = null;
+        }
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
+     }
+    
  }

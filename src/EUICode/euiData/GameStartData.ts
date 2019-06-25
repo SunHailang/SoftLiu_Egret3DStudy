@@ -22,10 +22,24 @@ export default class GameStartData extends eui.Component implements eui.U
         super.childrenCreated();
         this.width = this.stage.stageWidth;
         this.height = this.stage.stageHeight;
-        
-        this.stage.addEventListener(egret.Event.RESIZE, (evt: egret.Event) => {
-                this.width = this.stage.stageWidth;
-                this.height = this.stage.stageHeight;
-        }, this);
+
+
+        this.stage.addEventListener(egret.Event.RESIZE, this.ResizeOnChange.bind(this), this);
+        
+        //this.stage.addEventListener(egret.Event.REMOVED_FROM_STAGE, this.ResizeOnChange.bind(this), this);        
     }
+
+    public RemoveResizeEvent():void
+    {
+        this.stage.removeEventListener(egret.Event.RESIZE, this.ResizeOnChange.bind(this), this);
+    }
+
+    private ResizeOnChange(evt:egret.Event)
+    {
+        if(this.stage)
+        {
+            this.width = this.stage.stageWidth;
+            this.height = this.stage.stageHeight;
+        }
+    }
  }

@@ -9,6 +9,8 @@ import EuiRoot from "./EUICode/EuiRoot";
 import CubeMove from "./Splash/CubeMove";
 import MoveCar from "./Splash/MoveCar";
 import CameraMove from "./Splash/CameraMove";
+import CreateCarPrefab from "./Splash/CreateCarPrefab";
+import CreatePlayerPrefab from "./Splash/CreatePlayerPrefab";
 
 // Test code
 import SplashCollider from "./Collider/SplashCollider";
@@ -25,6 +27,8 @@ async function main() {
     CubeMove;
     MoveCar;
     CameraMove;
+    CreateCarPrefab;
+    CreatePlayerPrefab;
 
     //Test code
     SplashCollider;

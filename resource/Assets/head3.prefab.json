@@ -1,14 +1,14 @@
 {
     "version": "5",
     "assets": [
-        "Assets/materials/Red.mat.json",
+        "Assets/materials/Head3.mat.json",
         "Library/Cube.mesh.bin"
     ],
     "objects": [
         {
             "uuid": "1",
             "class": "paper.GameObject",
-            "name": "red",
+            "name": "head3",
             "_enabled": true,
             "components": [
                 {
@@ -21,13 +21,13 @@
                     "uuid": "3"
                 },
                 {
-                    "uuid": "4b575452-0e29-4d08-b121-b6767a8dc261"
+                    "uuid": "9f0c77cb-b4b0-4c10-9255-7037d391bfa6"
                 },
                 {
-                    "uuid": "c8772b6b-85ec-44ea-baaa-8d5b0ce7d8ce"
+                    "uuid": "81e200f3-32e7-4bd0-b55b-a9944db8bfad"
                 },
                 {
-                    "uuid": "d223ca90-70d4-47d6-acb9-8fe9ec015f3a"
+                    "uuid": "e1cf9322-cbe0-4f6f-a579-06ae5391ed2b"
                 }
             ]
         }
@@ -62,7 +62,7 @@
             }
         },
         {
-            "uuid": "4b575452-0e29-4d08-b121-b6767a8dc261",
+            "uuid": "9f0c77cb-b4b0-4c10-9255-7037d391bfa6",
             "class": "egret3d.oimo.Rigidbody",
             "_values": [
                 0,
@@ -73,7 +73,7 @@
             ]
         },
         {
-            "uuid": "c8772b6b-85ec-44ea-baaa-8d5b0ce7d8ce",
+            "uuid": "81e200f3-32e7-4bd0-b55b-a9944db8bfad",
             "class": "egret3d.oimo.BoxCollider",
             "_values": [
                 1,
@@ -83,8 +83,8 @@
             ]
         },
         {
-            "uuid": "d223ca90-70d4-47d6-acb9-8fe9ec015f3a",
-            "class": "MoveCar"
+            "uuid": "e1cf9322-cbe0-4f6f-a579-06ae5391ed2b",
+            "class": "CubeMove"
         }
     ]
 }

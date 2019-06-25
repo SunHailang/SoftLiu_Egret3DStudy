@@ -1,5 +1,6 @@
 import EventsManager from "../utils/EventManager/EventsManager";
-import PrefabUtils from "../utils/PrefabUtils";
+import GameStateMachine from "../utils/GameStateMachine";
+import MoveCar from "../Splash/MoveCar";
 
 /**
  *  __author__ = "sun hai lang"
@@ -27,14 +28,27 @@ import PrefabUtils from "../utils/PrefabUtils";
      private CreateCarInstance()
      {
         let sc = paper.Application.sceneManager.getActiveScene();
-        let red = PrefabUtils.getInstance().m_prefabDictionary.TryGetValue("red");
+        let red = GameStateMachine.getInstance().m_prefabDictionary.TryGetValue("red");
         if(red)
         {
             console.log(red);
             RES.getResAsync(red).then(()=>
             {
-                let obj = paper.Prefab.create(red, 0,0,0,sc);
+                let obj = paper.Prefab.create(red, 0, 0, 0, sc);                
+                obj.tag = "EditorCar";
                 console.log(obj);
+                console.log("Tag : " + obj.tag);
+                let car = obj.getComponent(MoveCar) as MoveCar;
+                if(car)
+                {
+                    car.StartMove(true, 10);
+                }
+                else
+                {
+                    //console.log("create move is null.");
+                    car = obj.addComponent(MoveCar) as MoveCar;
+                    car.StartMove(true, 10);
+                }
             });
             
         }else

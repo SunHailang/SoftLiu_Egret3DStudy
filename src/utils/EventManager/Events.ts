@@ -17,6 +17,8 @@
     OnGamePlayType,
     OnGameEndType,
 
+    OnResPlayerCompleteType,
+
 
     //Collider Test
     OnColliderTestType,

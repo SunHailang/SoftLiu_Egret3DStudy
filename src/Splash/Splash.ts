@@ -25,22 +25,6 @@ export default class Splash extends paper.Behaviour
     @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
     @paper.serializedField
     private m_camera:paper.GameObject | null;
-	
-	@paper.editor.property(paper.editor.EditType.GAMEOBJECT)
-    @paper.serializedField
-    public target: paper.GameObject | null;
-    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
-    @paper.serializedField
-    public target1: paper.GameObject | null;
-    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
-    @paper.serializedField
-    public target2: paper.GameObject | null;
-    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
-    @paper.serializedField
-    public target3: paper.GameObject | null;
-    @paper.editor.property(paper.editor.EditType.GAMEOBJECT)
-    @paper.serializedField
-    public target4: paper.GameObject | null;
 
     m_cubeList:CubeMove[] = [];
 
@@ -73,58 +57,11 @@ export default class Splash extends paper.Behaviour
         EventsManager.getInstance().RegisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
         EventsManager.getInstance().RegisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
         EventsManager.getInstance().RegisterEvent(Events.OnGamePlayType, this.OnGamPlayTypeFunc.bind(this));
+        EventsManager.getInstance().RegisterEvent(Events.OnResPlayerCompleteType, this.OnResPlayerCompleteTypeFunc.bind(this));
     }
     onStart()
     {
         this.m_gameEnd = false;
-        if(this.target)
-        {
-            let cube = this.target.getComponent(CubeMove);
-            if(cube)
-            {
-                this.m_cubeList.push(cube);
-            }
-        }
-        if(this.target1)
-        {
-            let cube1 = this.target1.getComponent(CubeMove);
-            if(cube1)
-            {
-                this.m_cubeList.push(cube1);
-            }
-        }
-        if(this.target2)
-        {
-            let cube2 = this.target2.getComponent(CubeMove);
-            if(cube2)
-            {
-                this.m_cubeList.push(cube2);
-            }
-        }
-        if(this.target3)
-        {
-            let cube3 = this.target3.getComponent(CubeMove);
-            if(cube3)
-            {
-                this.m_cubeList.push(cube3);
-            }
-        }
-        if(this.target4)
-        {
-            let cube4 = this.target4.getComponent(CubeMove);
-            if(cube4)
-            {
-                this.m_cubeList.push(cube4);
-            }
-        }
-        this.m_cubeMoveDis = this.m_cubeList.length * (this.m_cubeWidth + this.m_cubeGap) + this.m_cubeGap + this.m_roadWidth;
-        this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
-                                        this.m_cubeList[0].transform.localPosition.y,
-                                        this.m_cubeList[0].transform.localPosition.z);
-        this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
-                                        this.m_cubeList[0].transform.localPosition.y,
-                                        this.m_cubeList[0].transform.localPosition.z);
-        this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
 
         this.m_cameraMove = this.m_camera.getComponent(CameraMove)! as CameraMove;
     }
@@ -205,6 +142,24 @@ export default class Splash extends paper.Behaviour
             }
         }
     }
+
+    OnResPlayerCompleteTypeFunc(eventType:Events, items:any)
+    {
+        this.m_cubeList = items[0];
+        console.log(this.m_cubeList);
+        if(this.m_cubeList && this.m_cubeList.length > 0)
+        {
+            this.m_cubeMoveDis = this.m_cubeList.length * (this.m_cubeWidth + this.m_cubeGap) + this.m_cubeGap + this.m_roadWidth;
+            this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
+                                            this.m_cubeList[0].transform.localPosition.y,
+                                            this.m_cubeList[0].transform.localPosition.z);
+            this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
+                                            this.m_cubeList[0].transform.localPosition.y,
+                                            this.m_cubeList[0].transform.localPosition.z);
+            this.m_initDirection = Vector3Utils.subtract(this.m_initEndPosition, this.m_initStartPosition).normalize();
+        }
+    }
+
     OnGameStartTypeFunc(eventType:Events, items:any)
     {
         this.m_gameStart = true;
@@ -266,6 +221,7 @@ export default class Splash extends paper.Behaviour
         EventsManager.getInstance().DeregisterEvent(Events.OnGameStartType, this.OnGameStartTypeFunc.bind(this));
         EventsManager.getInstance().DeregisterEvent(Events.OnGameEndType, this.OnGameEndTypeFunc.bind(this));
         EventsManager.getInstance().DeregisterEvent(Events.OnGamePlayType, this.OnGamPlayTypeFunc.bind(this));
+        EventsManager.getInstance().DeregisterEvent(Events.OnResPlayerCompleteType, this.OnResPlayerCompleteTypeFunc.bind(this));
     }
 
 }

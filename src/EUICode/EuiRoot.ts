@@ -80,6 +80,7 @@ export default class EuiRoot extends paper.Behaviour
         this.m_renderer.root.addChild(start);        
         start.m_btnPlay.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
         {
+            start.RemoveResizeEvent();
             this.m_renderer.root.removeChild(start);
             EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, []);
         }, null);
@@ -107,6 +108,7 @@ export default class EuiRoot extends paper.Behaviour
             
             end.Button_Result.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
             {
+                end.RemoveResizeEvent();
                 this.m_renderer.root.removeChild(end);
                 EventsManager.getInstance().TriggerEvent(Events.OnGameStartType, []);
             }, null);

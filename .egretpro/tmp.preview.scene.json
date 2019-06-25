@@ -2,30 +2,68 @@
     "version": "5",
     "assets": [
         "Assets/materials/grid_a.mat.json",
-        "builtin/cube.mesh.bin",
-        "Assets/materials/blue.mat.json"
+        "Assets/materials/grid_b.mat.json",
+        "builtin/plane.mesh.bin",
+        "Assets/materials/blue.mat.json",
+        "builtin/cube.mesh.bin"
     ],
     "objects": [
         {
-            "uuid": "77159c6b-92de-4deb-953a-8519744ec520",
+            "uuid": "31b0016b-2199-4fdb-a2b9-0f38d32bb4f2",
             "class": "paper.Scene",
             "name": "newScene.scene.json",
             "extras": {},
             "entities": [
                 {
-                    "uuid": "ba0789f6-c8dc-4b7a-82dc-2247e2e12070"
+                    "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13"
                 },
                 {
-                    "uuid": "ff2b654b-b4a2-4c27-b8af-0c5700552366"
+                    "uuid": "7a662592-57d7-487a-aaf4-66c7a87c1b43"
                 },
                 {
-                    "uuid": "26782df7-a252-4f85-9e9e-5541c6c88807"
+                    "uuid": "218d7980-85c3-4137-ba32-4b7264da4504"
                 },
                 {
-                    "uuid": "33e0984c-d036-4841-b2bf-163aa46cd391"
+                    "uuid": "5860b1f8-9046-4348-b9d3-91086103255a"
                 },
                 {
-                    "uuid": "d30ac963-b224-43ad-a8f2-75ba18394a2b"
+                    "uuid": "0847066d-7ea2-4525-977c-6e1dd51b577c"
+                },
+                {
+                    "uuid": "c0bee1c6-e553-4a55-9f55-ec31cc109bb1"
+                },
+                {
+                    "uuid": "ee7ec3cf-f78d-47ae-8638-791f066b6092"
+                },
+                {
+                    "uuid": "7b8bc88a-8ef3-44b3-a566-7a4f974d1c5a"
+                },
+                {
+                    "uuid": "616e1760-8b50-497f-b719-c130048b205d"
+                },
+                {
+                    "uuid": "f78e9fc6-29c6-44de-a35e-23686b70b502"
+                },
+                {
+                    "uuid": "d4261754-cdb1-492c-92db-5c40d4b52c40"
+                },
+                {
+                    "uuid": "d1dd139e-4f6c-4131-9c0d-5c660aef68fa"
+                },
+                {
+                    "uuid": "082cdbf3-a187-4793-bbc2-1741b96257a0"
+                },
+                {
+                    "uuid": "ade07549-64fa-4373-a0b3-0da3b45393dd"
+                },
+                {
+                    "uuid": "fd253eb4-763d-4d60-bd63-3b0868beb4de"
+                },
+                {
+                    "uuid": "c0b42684-ce5d-41cd-b2f9-55541bfb8344"
+                },
+                {
+                    "uuid": "183a3634-eed5-42aa-8441-ebe83fcfd04f"
                 }
             ],
             "lightmapIntensity": 1,
@@ -48,308 +86,683 @@
             "lightmaps": []
         },
         {
-            "uuid": "ba0789f6-c8dc-4b7a-82dc-2247e2e12070",
+            "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13",
             "class": "paper.GameObject",
-            "name": "Main Camera",
+            "name": "camera",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "6ddedbff-734d-47db-931e-29cc5afd11ea"
+                    "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7"
                 },
                 {
-                    "uuid": "83cd7492-d4a4-46a8-badd-261c050c1f1a"
+                    "uuid": "3356faf6-ae75-4c74-b007-b8a88d46a9c0"
+                },
+                {
+                    "uuid": "30479722-e89d-47af-8820-950a3fd15cc6"
                 }
             ]
         },
         {
-            "uuid": "ff2b654b-b4a2-4c27-b8af-0c5700552366",
+            "uuid": "7a662592-57d7-487a-aaf4-66c7a87c1b43",
             "class": "paper.GameObject",
-            "name": "cube",
-            "tag": "EditorOnly",
+            "name": "EUI Root ",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "dd859213-29f0-4359-a610-4606a0826612"
+                    "uuid": "d588bcc3-7743-4e6c-96eb-8cab20ada1e5"
                 },
                 {
-                    "uuid": "923150f7-ec00-42a1-ab19-6be19b2bed47"
+                    "uuid": "24a1fe9b-c391-47fa-8c18-e4ce589bb686"
                 },
                 {
-                    "uuid": "312275fa-2bf7-4acd-9a3e-c04b6769b5ff"
-                },
-                {
-                    "uuid": "104a3da9-e346-43cf-bbbe-f239b21a1d66"
-                },
-                {
-                    "uuid": "d057833c-0e85-425e-ad12-50a75d4f8150"
+                    "uuid": "3350e368-3e89-4e5f-90be-9425e82d2aed"
                 }
             ]
         },
         {
-            "uuid": "26782df7-a252-4f85-9e9e-5541c6c88807",
+            "uuid": "218d7980-85c3-4137-ba32-4b7264da4504",
             "class": "paper.GameObject",
-            "name": "cube1",
+            "name": "animater",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "59731a94-6bb2-4587-88aa-60bed3bbba53"
+                    "uuid": "c47b4788-cd65-45d6-b589-ad90977dd86a"
                 },
                 {
-                    "uuid": "603afb20-80a4-4b54-b3fe-63f8ddcc05ea"
+                    "uuid": "b9be70d4-d5bc-46cb-b128-0ff09def0914"
                 },
                 {
-                    "uuid": "fa625cc3-8058-4139-ba82-c8d0d513edb7"
-                },
-                {
-                    "uuid": "97a792ff-3892-417c-a69e-db3bb9bb0f4c"
-                },
-                {
-                    "uuid": "535a6d31-a5cd-4345-8919-9a545f069b1b"
-                },
-                {
-                    "uuid": "2962fd0d-c67a-40a9-8f1c-30f5a25adaef"
+                    "uuid": "1200f9ab-e4b8-453b-9059-a4576979b1fd"
                 }
             ]
         },
         {
-            "uuid": "33e0984c-d036-4841-b2bf-163aa46cd391",
+            "uuid": "5860b1f8-9046-4348-b9d3-91086103255a",
             "class": "paper.GameObject",
-            "name": "cube3",
+            "name": "MapScenes",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "3f749484-5083-4416-b25d-1131f93f16a0"
-                },
-                {
-                    "uuid": "9dc6956d-b508-448d-ba60-94b842d61f65"
-                },
-                {
-                    "uuid": "5f6f3385-1f8b-46f0-a8f9-249d76e3973c"
-                },
-                {
-                    "uuid": "71628b65-3f70-4394-bd34-023f03c54c16"
-                },
-                {
-                    "uuid": "88b41b7a-be63-4161-98ce-64b0cee443bb"
-                },
-                {
-                    "uuid": "ab8cb8f9-3783-4ba4-8eb7-c4a692aee1ab"
+                    "uuid": "0ed30f18-b87a-4309-b8cd-3e10d1a622f8"
                 }
             ]
         },
         {
-            "uuid": "d30ac963-b224-43ad-a8f2-75ba18394a2b",
+            "uuid": "0847066d-7ea2-4525-977c-6e1dd51b577c",
             "class": "paper.GameObject",
-            "name": "UI Root",
+            "name": "directinallight",
             "extras": {},
             "_enabled": true,
             "components": [
                 {
-                    "uuid": "ad5bfbc6-346d-49fd-afbf-032d428b7f5f"
+                    "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e"
                 },
                 {
-                    "uuid": "ef46a713-9925-4daf-8757-d215f4769f96"
+                    "uuid": "9bf3228b-b404-432e-8fe4-89eb30710c7d"
+                }
+            ]
+        },
+        {
+            "uuid": "c0bee1c6-e553-4a55-9f55-ec31cc109bb1",
+            "class": "paper.GameObject",
+            "name": "plane",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "d3001c85-c368-49d3-8e8f-cb70c88e35d8"
                 },
                 {
-                    "uuid": "3250325c-26e2-4f83-bacf-8b5bb42b3777"
+                    "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a"
+                },
+                {
+                    "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa"
+                },
+                {
+                    "uuid": "0ca0a1d4-9eab-4e52-833e-ce59966b9046"
+                },
+                {
+                    "uuid": "d2f40a09-3bf3-4bd2-b556-c74e77140e90"
+                }
+            ]
+        },
+        {
+            "uuid": "ee7ec3cf-f78d-47ae-8638-791f066b6092",
+            "class": "paper.GameObject",
+            "name": "Road_1",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "3921609f-6dfd-4898-9421-2038d128f640"
+                }
+            ]
+        },
+        {
+            "uuid": "7b8bc88a-8ef3-44b3-a566-7a4f974d1c5a",
+            "class": "paper.GameObject",
+            "name": "cube_Road",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "2ef808dc-63b3-4c15-b31c-f13e645d30b4"
+                },
+                {
+                    "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af"
+                },
+                {
+                    "uuid": "76a70f58-5a0d-43ba-af12-7e3fbc673706"
+                }
+            ]
+        },
+        {
+            "uuid": "616e1760-8b50-497f-b719-c130048b205d",
+            "class": "paper.GameObject",
+            "name": "CreatePrefab_RightToLeft",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "57c26e02-c088-4b6f-958e-f50df412135c"
+                },
+                {
+                    "uuid": "8ddda3f8-b3f2-4f9d-9651-b15938802d63"
+                }
+            ]
+        },
+        {
+            "uuid": "f78e9fc6-29c6-44de-a35e-23686b70b502",
+            "class": "paper.GameObject",
+            "name": "CreatePrefab_LeftToRight",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "bc6a697b-755b-4847-ab22-3f89b20674d0"
+                },
+                {
+                    "uuid": "f2c981fe-c18f-42cf-a5c0-5f843715bb5c"
+                }
+            ]
+        },
+        {
+            "uuid": "d4261754-cdb1-492c-92db-5c40d4b52c40",
+            "class": "paper.GameObject",
+            "name": "Road_2",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "20941f18-e4c4-4f24-9bc5-b67708c28846"
+                }
+            ]
+        },
+        {
+            "uuid": "d1dd139e-4f6c-4131-9c0d-5c660aef68fa",
+            "class": "paper.GameObject",
+            "name": "cube_Road",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "b2bf9fb2-08d6-4420-b72b-547e28380a02"
+                },
+                {
+                    "uuid": "eb580943-6f98-4aac-8e68-28afeff36724"
+                },
+                {
+                    "uuid": "3904331e-5bb0-47f8-8473-bf0f675265b0"
+                }
+            ]
+        },
+        {
+            "uuid": "082cdbf3-a187-4793-bbc2-1741b96257a0",
+            "class": "paper.GameObject",
+            "name": "CreatePrefab_LeftToRight",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "8c1b15cb-cd22-4f44-a71e-b1e27fd668d0"
+                },
+                {
+                    "uuid": "bfbd62aa-0abc-4e1e-8bb7-6e38b42bdb1c"
+                }
+            ]
+        },
+        {
+            "uuid": "ade07549-64fa-4373-a0b3-0da3b45393dd",
+            "class": "paper.GameObject",
+            "name": "Road_3",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "96597fc5-d08d-4c02-9a95-6efb2ed3c923"
+                }
+            ]
+        },
+        {
+            "uuid": "fd253eb4-763d-4d60-bd63-3b0868beb4de",
+            "class": "paper.GameObject",
+            "name": "cube_Road",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "ae11e456-8c28-4f81-8627-3a5503ffbd96"
+                },
+                {
+                    "uuid": "035632dc-e84c-4cf6-93e7-e54bd44da0ed"
+                },
+                {
+                    "uuid": "3cd5ade1-55be-43f6-9db9-5f9b5b55ac50"
+                }
+            ]
+        },
+        {
+            "uuid": "c0b42684-ce5d-41cd-b2f9-55541bfb8344",
+            "class": "paper.GameObject",
+            "name": "CreatePrefab_RightToLeft",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "a49ecc73-ebdd-4c84-bb20-49b6f95c3bd1"
+                },
+                {
+                    "uuid": "37ee00fc-2cfe-4fb5-afcc-1e85f73188fc"
+                }
+            ]
+        },
+        {
+            "uuid": "183a3634-eed5-42aa-8441-ebe83fcfd04f",
+            "class": "paper.GameObject",
+            "name": "CreatePrefab_LeftToRight",
+            "extras": {},
+            "_enabled": true,
+            "components": [
+                {
+                    "uuid": "06035b84-5965-4108-9a9e-4c0362cf3886"
+                },
+                {
+                    "uuid": "6bb1e635-bb37-4a2d-a538-73053fd69820"
                 }
             ]
         }
     ],
     "components": [
         {
-            "uuid": "6ddedbff-734d-47db-931e-29cc5afd11ea",
+            "uuid": "a57f8c79-e8ad-461a-9b75-17da1c8e75e7",
             "class": "egret3d.Transform",
             "_localPosition": [
-                -18.350002608731643,
-                9.14443098907627,
-                -2.2205278604782746
+                -224.89749598745925,
+                20.92918904867825,
+                -8.202904177143454
             ],
             "_localRotation": [
-                0.17106461289602906,
-                0.6861026878060832,
-                -0.17106461289602903,
-                0.6861026878060833
+                0.3957958124096177,
+                0.4568443519444745,
+                -0.23781811685295903,
+                0.760316681568908
             ],
             "extras": {}
         },
         {
-            "uuid": "83cd7492-d4a4-46a8-badd-261c050c1f1a",
+            "uuid": "3356faf6-ae75-4c74-b007-b8a88d46a9c0",
             "class": "egret3d.Camera",
-            "fov": 1.5,
+            "bufferMask": 1280,
+            "cullingMask": 1,
+            "fov": 0.8,
             "extras": {}
         },
         {
-            "uuid": "dd859213-29f0-4359-a610-4606a0826612",
-            "class": "egret3d.MeshRenderer",
-            "materials": [
+            "uuid": "30479722-e89d-47af-8820-950a3fd15cc6",
+            "class": "CameraMove",
+            "extras": {}
+        },
+        {
+            "uuid": "d588bcc3-7743-4e6c-96eb-8cab20ada1e5",
+            "class": "egret3d.Transform",
+            "extras": {}
+        },
+        {
+            "uuid": "24a1fe9b-c391-47fa-8c18-e4ce589bb686",
+            "class": "egret3d.Egret2DRenderer",
+            "materials": [],
+            "extras": {}
+        },
+        {
+            "uuid": "3350e368-3e89-4e5f-90be-9425e82d2aed",
+            "class": "EuiRoot",
+            "extras": {}
+        },
+        {
+            "uuid": "c47b4788-cd65-45d6-b589-ad90977dd86a",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -213,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "b9be70d4-d5bc-46cb-b128-0ff09def0914",
+            "class": "Splash",
+            "m_camera": {
+                "uuid": "8cfe5482-521b-40e9-8f98-31da8f107b13",
+                "class": "paper.GameObject"
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "1200f9ab-e4b8-453b-9059-a4576979b1fd",
+            "class": "CreatePlayerPrefab",
+            "extras": {}
+        },
+        {
+            "uuid": "0ed30f18-b87a-4309-b8cd-3e10d1a622f8",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                -0.5,
+                0
+            ],
+            "children": [
                 {
-                    "asset": 0
+                    "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e"
+                },
+                {
+                    "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a"
+                },
+                {
+                    "uuid": "3921609f-6dfd-4898-9421-2038d128f640"
+                },
+                {
+                    "uuid": "20941f18-e4c4-4f24-9bc5-b67708c28846"
+                },
+                {
+                    "uuid": "96597fc5-d08d-4c02-9a95-6efb2ed3c923"
                 }
             ],
             "extras": {}
         },
         {
-            "uuid": "923150f7-ec00-42a1-ab19-6be19b2bed47",
+            "uuid": "f75ad9bf-b51e-4269-bff6-64900452a07e",
             "class": "egret3d.Transform",
             "_localPosition": [
                 0,
-                -1,
-                0
+                322.8739175813831,
+                -1.4210854715202004e-14
+            ],
+            "_localRotation": [
+                0.5075383629607041,
+                0,
+                0,
+                0.8616291604415258
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "9bf3228b-b404-432e-8fe4-89eb30710c7d",
+            "class": "egret3d.DirectionalLight",
+            "extras": {}
+        },
+        {
+            "uuid": "d3001c85-c368-49d3-8e8f-cb70c88e35d8",
+            "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 0
+                },
+                {
+                    "asset": 1
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "fdc6a82b-32a3-48bb-8705-818a7410a52a",
+            "class": "egret3d.Transform",
+            "_localRotation": [
+                -0.7071067811865475,
+                0,
+                0,
+                0.7071067811865476
             ],
             "_localScale": [
-                200,
-                1,
-                100
-            ],
-            "extras": {}
-        },
-        {
-            "uuid": "312275fa-2bf7-4acd-9a3e-c04b6769b5ff",
-            "class": "egret3d.MeshFilter",
-            "mesh": {
-                "asset": 1
-            },
-            "extras": {}
-        },
-        {
-            "uuid": "104a3da9-e346-43cf-bbbe-f239b21a1d66",
-            "class": "egret3d.oimo.Rigidbody",
-            "_values": [
-                1,
-                1,
-                1,
-                0,
-                0
-            ],
-            "extras": {}
-        },
-        {
-            "uuid": "d057833c-0e85-425e-ad12-50a75d4f8150",
-            "class": "egret3d.oimo.BoxCollider",
-            "box": [
-                -100,
-                -0.5,
-                -50,
-                100,
-                0.5,
+                50,
+                50,
                 50
             ],
             "extras": {}
         },
         {
-            "uuid": "59731a94-6bb2-4587-88aa-60bed3bbba53",
-            "class": "egret3d.MeshRenderer",
-            "materials": [
+            "uuid": "cbf58d06-2cb4-44e5-ae14-e35fbc4bfafa",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 2
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "0ca0a1d4-9eab-4e52-833e-ce59966b9046",
+            "class": "egret3d.oimo.Rigidbody",
+            "_values": [
+                1,
+                1,
+                1,
+                0,
+                0
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "d2f40a09-3bf3-4bd2-b556-c74e77140e90",
+            "class": "egret3d.oimo.BoxCollider",
+            "extras": {}
+        },
+        {
+            "uuid": "3921609f-6dfd-4898-9421-2038d128f640",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -210,
+                0,
+                0
+            ],
+            "children": [
                 {
-                    "asset": 2
+                    "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af"
+                },
+                {
+                    "uuid": "57c26e02-c088-4b6f-958e-f50df412135c"
+                },
+                {
+                    "uuid": "bc6a697b-755b-4847-ab22-3f89b20674d0"
                 }
             ],
             "extras": {}
         },
         {
-            "uuid": "603afb20-80a4-4b54-b3fe-63f8ddcc05ea",
-            "class": "egret3d.Transform",
-            "_localPosition": [
-                0,
-                0,
-                5
-            ],
-            "extras": {}
-        },
-        {
-            "uuid": "fa625cc3-8058-4139-ba82-c8d0d513edb7",
-            "class": "egret3d.MeshFilter",
-            "mesh": {
-                "asset": 1
-            },
-            "extras": {}
-        },
-        {
-            "uuid": "97a792ff-3892-417c-a69e-db3bb9bb0f4c",
-            "class": "egret3d.oimo.Rigidbody",
-            "_values": [
-                2,
-                1,
-                0,
-                0,
-                0
-            ],
-            "extras": {}
-        },
-        {
-            "uuid": "535a6d31-a5cd-4345-8919-9a545f069b1b",
-            "class": "egret3d.oimo.BoxCollider",
-            "extras": {}
-        },
-        {
-            "uuid": "2962fd0d-c67a-40a9-8f1c-30f5a25adaef",
-            "class": "SplashCollider",
-            "extras": {}
-        },
-        {
-            "uuid": "3f749484-5083-4416-b25d-1131f93f16a0",
+            "uuid": "2ef808dc-63b3-4c15-b31c-f13e645d30b4",
             "class": "egret3d.MeshRenderer",
-            "extras": {}
-        },
-        {
-            "uuid": "9dc6956d-b508-448d-ba60-94b842d61f65",
-            "class": "egret3d.Transform",
-            "_localPosition": [
-                0,
-                0,
-                -6.473071509698567
+            "materials": [
+                {
+                    "asset": 3
+                }
             ],
             "extras": {}
         },
         {
-            "uuid": "5f6f3385-1f8b-46f0-a8f9-249d76e3973c",
+            "uuid": "8841e82c-35cd-4cc9-990d-f903de91b8af",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                -2.45,
+                0
+            ],
+            "_localScale": [
+                5,
+                5,
+                50
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "76a70f58-5a0d-43ba-af12-7e3fbc673706",
             "class": "egret3d.MeshFilter",
             "mesh": {
-                "asset": 1
+                "asset": 4
             },
             "extras": {}
         },
         {
-            "uuid": "71628b65-3f70-4394-bd34-023f03c54c16",
-            "class": "egret3d.oimo.Rigidbody",
-            "_values": [
+            "uuid": "57c26e02-c088-4b6f-958e-f50df412135c",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -1.25,
                 0,
-                1,
-                0,
-                0,
-                0
+                -25
             ],
             "extras": {}
         },
         {
-            "uuid": "88b41b7a-be63-4161-98ce-64b0cee443bb",
-            "class": "egret3d.oimo.BoxCollider",
+            "uuid": "8ddda3f8-b3f2-4f9d-9651-b15938802d63",
+            "class": "CreateCarPrefab",
             "extras": {}
         },
         {
-            "uuid": "ab8cb8f9-3783-4ba4-8eb7-c4a692aee1ab",
-            "class": "SplashCollider",
-            "extras": {},
-            "_enabled": false
-        },
-        {
-            "uuid": "ad5bfbc6-346d-49fd-afbf-032d428b7f5f",
+            "uuid": "bc6a697b-755b-4847-ab22-3f89b20674d0",
             "class": "egret3d.Transform",
+            "_localPosition": [
+                1.25,
+                0,
+                25
+            ],
             "extras": {}
         },
         {
-            "uuid": "ef46a713-9925-4daf-8757-d215f4769f96",
-            "class": "egret3d.Egret2DRenderer",
+            "uuid": "f2c981fe-c18f-42cf-a5c0-5f843715bb5c",
+            "class": "CreateCarPrefab",
+            "m_moveVelocity": -10,
             "extras": {}
         },
         {
-            "uuid": "3250325c-26e2-4f83-bacf-8b5bb42b3777",
-            "class": "ColliderEuiRoot",
+            "uuid": "20941f18-e4c4-4f24-9bc5-b67708c28846",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -197,
+                0,
+                0
+            ],
+            "children": [
+                {
+                    "uuid": "eb580943-6f98-4aac-8e68-28afeff36724"
+                },
+                {
+                    "uuid": "8c1b15cb-cd22-4f44-a71e-b1e27fd668d0"
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "b2bf9fb2-08d6-4420-b72b-547e28380a02",
+            "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 3
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "eb580943-6f98-4aac-8e68-28afeff36724",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                -2.45,
+                0
+            ],
+            "_localScale": [
+                5,
+                5,
+                50
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "3904331e-5bb0-47f8-8473-bf0f675265b0",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 4
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "8c1b15cb-cd22-4f44-a71e-b1e27fd668d0",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                0,
+                25
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "bfbd62aa-0abc-4e1e-8bb7-6e38b42bdb1c",
+            "class": "CreateCarPrefab",
+            "m_moveVelocity": -10,
+            "extras": {}
+        },
+        {
+            "uuid": "96597fc5-d08d-4c02-9a95-6efb2ed3c923",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -184.5,
+                0,
+                0
+            ],
+            "children": [
+                {
+                    "uuid": "035632dc-e84c-4cf6-93e7-e54bd44da0ed"
+                },
+                {
+                    "uuid": "a49ecc73-ebdd-4c84-bb20-49b6f95c3bd1"
+                },
+                {
+                    "uuid": "06035b84-5965-4108-9a9e-4c0362cf3886"
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "ae11e456-8c28-4f81-8627-3a5503ffbd96",
+            "class": "egret3d.MeshRenderer",
+            "materials": [
+                {
+                    "asset": 3
+                }
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "035632dc-e84c-4cf6-93e7-e54bd44da0ed",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                0,
+                -2.45,
+                0
+            ],
+            "_localScale": [
+                5,
+                5,
+                50
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "3cd5ade1-55be-43f6-9db9-5f9b5b55ac50",
+            "class": "egret3d.MeshFilter",
+            "mesh": {
+                "asset": 4
+            },
+            "extras": {}
+        },
+        {
+            "uuid": "a49ecc73-ebdd-4c84-bb20-49b6f95c3bd1",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                1.25,
+                0,
+                -25
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "37ee00fc-2cfe-4fb5-afcc-1e85f73188fc",
+            "class": "CreateCarPrefab",
+            "extras": {}
+        },
+        {
+            "uuid": "06035b84-5965-4108-9a9e-4c0362cf3886",
+            "class": "egret3d.Transform",
+            "_localPosition": [
+                -1.25,
+                0,
+                25
+            ],
+            "extras": {}
+        },
+        {
+            "uuid": "6bb1e635-bb37-4a2d-a538-73053fd69820",
+            "class": "CreateCarPrefab",
+            "m_moveVelocity": -10,
             "extras": {}
         }
     ]

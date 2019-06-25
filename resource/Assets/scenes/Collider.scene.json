@@ -108,9 +108,6 @@
                 },
                 {
                     "uuid": "535a6d31-a5cd-4345-8919-9a545f069b1b"
-                },
-                {
-                    "uuid": "2962fd0d-c67a-40a9-8f1c-30f5a25adaef"
                 }
             ]
         },
@@ -287,11 +284,6 @@
             "extras": {}
         },
         {
-            "uuid": "2962fd0d-c67a-40a9-8f1c-30f5a25adaef",
-            "class": "SplashCollider",
-            "extras": {}
-        },
-        {
             "uuid": "3f749484-5083-4416-b25d-1131f93f16a0",
             "class": "egret3d.MeshRenderer",
             "extras": {}
@@ -318,7 +310,7 @@
             "uuid": "71628b65-3f70-4394-bd34-023f03c54c16",
             "class": "egret3d.oimo.Rigidbody",
             "_values": [
-                0,
+                2,
                 1,
                 0,
                 0,
@@ -334,8 +326,7 @@
         {
             "uuid": "ab8cb8f9-3783-4ba4-8eb7-c4a692aee1ab",
             "class": "SplashCollider",
-            "extras": {},
-            "_enabled": false
+            "extras": {}
         },
         {
             "uuid": "ad5bfbc6-346d-49fd-afbf-032d428b7f5f",
