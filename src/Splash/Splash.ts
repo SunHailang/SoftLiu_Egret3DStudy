@@ -105,6 +105,7 @@ export default class Splash extends paper.Behaviour
                             console.log("move all cube finish.");
                             this.m_levelIndex++;
                             this.InitPlayerMoveInfo();
+                            this.m_gamePlay = false;
                             if(this.m_cameraMove)
                             {
                                 this.m_cameraMove.CanMove(true, 13, ()=>{
@@ -188,16 +189,24 @@ export default class Splash extends paper.Behaviour
 
     OnResPlayerCompleteTypeFunc(eventType:Events, items:any)
     {
-        this.m_cubeList = items[0];
-        this.m_levelIndex = 0;
-        //console.log(this.m_cubeList);
-        if(this.m_cubeList && this.m_cubeList.length > 0)
-        {            
-            this.InitPlayerMoveInfo();
-        }else
+        switch(items[0])
         {
-            console.log("add player list error.")
-        }
+            case "initPlayer":
+                this.m_cubeList = items[1];
+                this.m_levelIndex = 0;
+                //console.log(this.m_cubeList);
+                if(this.m_cubeList && this.m_cubeList.length > 0)
+                {            
+                    this.InitPlayerMoveInfo();
+                }else
+                {
+                    console.log("add player list error.")
+                }
+            break;
+            case "alivePlayer":
+                this.m_target = items[1];
+            break;
+        }        
     }
 
     OnGameStartTypeFunc(eventType:Events, items:any)

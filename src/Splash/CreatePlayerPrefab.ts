@@ -53,7 +53,8 @@ import CubeMove from "./CubeMove";
                 this.m_playerMove.pop();                
             }
             let index = 0;
-            for (let index = 0; index < this.m_palyerName.length; index++) {
+            for (let index = 0; index < this.m_palyerName.length; index++) 
+            {
                 const element = this.m_palyerName[index];
                 let res = GameStateMachine.getInstance().m_prefabDictionary.TryGetValue(element);
                 if(res)
@@ -79,12 +80,37 @@ import CubeMove from "./CubeMove";
                             //console.log("Create Player Complete");
                             if(index >= this.m_palyerName.length)
                             {
-                                EventsManager.getInstance().TriggerEvent(Events.OnResPlayerCompleteType, [this.m_playerMove]);
+                                EventsManager.getInstance().TriggerEvent(Events.OnResPlayerCompleteType, ["initPlayer", this.m_playerMove]);
                             }
                         }
                     });
                 }
-            }            
+            }
+            // 生成需要救助的Player Cube
+            let res = GameStateMachine.getInstance().m_prefabDictionary.TryGetValue("yellow");
+            if(res)
+            {
+                RES.getResAsync(res).then(()=>
+                {                        
+                    let obj = paper.Prefab.create(res, 14, 0, 0, this.m_activityScreen) as paper.GameObject;
+                    if(obj)
+                    {                 
+                        obj.tag = "EditorPlayer";           
+                        obj.transform.setParent(this.transform, false);
+                        let palyer = obj.getComponent(CubeMove) as CubeMove;
+                        if(palyer)
+                        {
+                            palyer.OnInitCube(index, false);
+                        }
+                        else
+                        {
+                            palyer = obj.addComponent(CubeMove) as CubeMove;
+                            palyer.OnInitCube(index, false);
+                        }
+                        EventsManager.getInstance().TriggerEvent(Events.OnResPlayerCompleteType, ["alivePlayer", obj]);
+                    }
+                });
+            }
         }
      }
 
