@@ -32,9 +32,13 @@ import UserData from "../User/UserData";
     private m_moveFinish:(index:number)=>void = null;
 
     private m_rgidbody:egret3d.oimo.Rigidbody;
+    private m_boxCollider:egret3d.oimo.BoxCollider;
 
     private m_gameStart:boolean = false;
     private m_gameEnd:boolean = true;
+
+    private m_moveEndLevel:boolean = false;
+    private m_moveEndStartAni:boolean = false;
 
     onAwake(config:any)
     {
@@ -54,19 +58,59 @@ import UserData from "../User/UserData";
         this.m_moveLocationCan = false;
 
         this.m_rgidbody = this.gameObject.getComponent(egret3d.oimo.Rigidbody) as egret3d.oimo.Rigidbody;
+        this.m_boxCollider = this.gameObject.getComponent(egret3d.oimo.BoxCollider) as egret3d.oimo.BoxCollider;
     }
 
     public OnInitCube(index:number, allow:boolean)
     {
         this.m_moveAllow = allow;
         this.m_indexNum = index;
+
+        this.m_moveEndLevel = false;
+        this.m_moveEndStartAni = false;
+    }
+
+    onUpdate(delta:number)
+    {
+        if(this.m_moveEndLevel)
+        {
+            // 移动结束 到达农场里面
+            if(this.transform.localPosition.x >= 37 && !this.m_moveEndStartAni)
+            {
+                this.m_moveEndStartAni = true;
+                this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+                let zDir =  (this.m_indexNum  % 2) == 0? 2 : -2;
+                this.m_rgidbody.addLinearVelocity(egret3d.Vector3.create(2, 0, zDir));
+            }
+            else
+            {
+                if(this.transform.localPosition.x >= 40 || this.transform.localPosition.z >= 5 || this.transform.localPosition.z <= -5)
+                {
+                    this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+                    this.m_moveEndLevel = false;
+                }
+            }
+        }
     }
 
     onFixedUpdate(delta:number)
     {
         if(this.m_moveStart && !this.m_moveEnd)
-        {            
-            if(this.transform.localPosition.x >= this.m_endPostion.x)
+        {
+            if(this.transform.localPosition.x >= 35)
+            {
+                // 结束当前关卡
+                this.m_moveEnd = true;
+                this.m_moveStart = false;                
+                //this.m_rgidbody.addLinearVelocity(Vector3Utils.multiplyScalar(this.m_rgidbody.linearVelocity, -1));
+                //this.transform.setLocalPosition(egret3d.Vector3.create(40,this.transform.localPosition.x, this.transform.localPosition.z - 50 * Math.random()));
+                if(this.m_moveFinish)
+                {
+                    this.m_moveFinish(this.m_indexNum);
+                }
+                this.m_moveEndLevel = true;
+            }
+            else if(this.transform.localPosition.x >= this.m_endPostion.x)
             {
                 this.m_moveEnd = true;
                 this.m_moveStart = false;
@@ -149,7 +193,8 @@ import UserData from "../User/UserData";
         let box = collider as egret3d.oimo.BoxCollider;        
         if(box)
         {
-            //console.log(box.gameObject);
+            console.log("onCollisionEnter Name: " + box.gameObject.name);
+            this.m_boxCollider.collisionMask = paper.Layer.BuiltinLayer1;
             if(box.gameObject.tag == "EditorCar")
             {
                 //生成用户数据

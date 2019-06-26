@@ -417,31 +417,6 @@
 			"name": "default_thm_json"
 		},
 		{
-			"url": "Assets/head1.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/head1.prefab.json"
-		},
-		{
-			"url": "Assets/head2.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/head2.prefab.json"
-		},
-		{
-			"url": "Assets/head3.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/head3.prefab.json"
-		},
-		{
-			"url": "Assets/head4.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/head4.prefab.json"
-		},
-		{
-			"url": "Assets/head5.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/head5.prefab.json"
-		},
-		{
 			"url": "Assets/materials/blue.mat.json",
 			"type": "Material",
 			"name": "Assets/materials/blue.mat.json"
@@ -492,14 +467,44 @@
 			"name": "Assets/materials/Yellow.mat.json"
 		},
 		{
+			"url": "Assets/prefab/head1.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/head1.prefab.json"
+		},
+		{
+			"url": "Assets/prefab/head2.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/head2.prefab.json"
+		},
+		{
+			"url": "Assets/prefab/head3.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/head3.prefab.json"
+		},
+		{
+			"url": "Assets/prefab/head4.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/head4.prefab.json"
+		},
+		{
+			"url": "Assets/prefab/head5.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/head5.prefab.json"
+		},
+		{
 			"url": "Assets/prefab/playerPrefab/one.prefab.json",
 			"type": "Prefab",
 			"name": "Assets/prefab/playerPrefab/one.prefab.json"
 		},
 		{
-			"url": "Assets/red.prefab.json",
+			"url": "Assets/prefab/red.prefab.json",
 			"type": "Prefab",
-			"name": "Assets/red.prefab.json"
+			"name": "Assets/prefab/red.prefab.json"
+		},
+		{
+			"url": "Assets/prefab/yellow.prefab.json",
+			"type": "Prefab",
+			"name": "Assets/prefab/yellow.prefab.json"
 		},
 		{
 			"url": "Assets/scenes/Collider.scene.json",
@@ -600,11 +605,6 @@
 			"url": "Assets/textures/shop_3.png",
 			"type": "Texture",
 			"name": "Assets/textures/shop_3.png"
-		},
-		{
-			"url": "Assets/yellow.prefab.json",
-			"type": "Prefab",
-			"name": "Assets/yellow.prefab.json"
 		},
 		{
 			"url": "Library/Cube.mesh.bin",

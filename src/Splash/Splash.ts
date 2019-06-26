@@ -91,64 +91,111 @@ export default class Splash extends paper.Behaviour
             if(items[0] == "image_click_scenc")
             {
                 if(!this.m_gamePlay) return;
-                if(this.m_moveIndex <= this.m_cubeList.length)
+                
+            }
+            else if(items[0] == "image_touchBegin_scenc")
+            {
+                if(!this.m_gamePlay) 
                 {
-                    let endPos = egret3d.Vector3.create(this.m_initEndPosition.x - ((this.m_cubeWidth + this.m_cubeGap) * (this.m_moveIndex - 1)), this.m_initEndPosition.y, this.m_initEndPosition.z);
-                    let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
-                    //console.log(this.m_cubeList[this.m_moveIndex-1]);
-                    this.m_cubeList[this.m_moveIndex-1].OnMoveStart(endPos, dir, (index:number)=>
+                    return;
+                }
+                this.m_btnAPress = true;
+                this.test(500);
+            }
+            else if(items[0] == "image_touchEnd_scenc")
+            {
+                if(!this.m_gamePlay) 
+                {
+                    return;
+                }
+                this.m_btnAPress = false;
+            }
+        }
+    }
+
+    private MovePlayer()
+    {
+        if(!this.m_gamePlay) 
+        {
+            return;
+        }
+        if(this.m_moveIndex <= this.m_cubeList.length)
+        {
+            let endPos = egret3d.Vector3.create(this.m_initEndPosition.x - ((this.m_cubeWidth + this.m_cubeGap) * (this.m_moveIndex - 1)), this.m_initEndPosition.y, this.m_initEndPosition.z);
+            let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
+            //console.log(this.m_cubeList[this.m_moveIndex-1]);
+            this.m_cubeList[this.m_moveIndex-1].OnMoveStart(endPos, dir, (index:number)=>
+            {
+                // Complete Cube Move to end target
+                if(index == this.m_cubeList[this.m_cubeList.length - 1].m_indexNum)
+                {
+                    // 说明所有Cube都已经移动完成了
+                    console.log("move all cube finish.");
+                    this.m_btnPressIndex = 0;
+                    this.m_btnAPress = false;
+                    this.m_levelIndex++;
+                    this.m_gamePlay = false;
+                    if(this.m_levelIndex >= this.m_levelInfo.length)
                     {
-                        // Complete Cube Move to end target
-                        if(index == this.m_cubeList[this.m_cubeList.length - 1].m_indexNum)
-                        {
-                            // 说明所有Cube都已经移动完成了
-                            console.log("move all cube finish.");
-                            this.m_levelIndex++;
-                            this.InitPlayerMoveInfo();
-                            this.m_gamePlay = false;
-                            if(this.m_cameraMove)
+                        //结束了整个关卡，闯关成功
+                        let user = new UserData();
+                        user.score = 100 * this.m_levelIndex;
+                        user.result = true;
+                        user.gems = 100;
+                        user.coins = 100;
+                        //EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
+                    }
+                    else
+                    {
+                        this.InitPlayerMoveInfo();
+                    }
+                    
+                    if(this.m_cameraMove)
+                    {
+                        this.m_cameraMove.CanMove(true, this.m_cubeMoveDis, ()=>{
+
+                            console.log("camera move complete."); 
+                            if(this.m_levelIndex >= this.m_levelInfo.length)
                             {
-                                this.m_cameraMove.CanMove(true, 13, ()=>{
-
-                                    console.log("camera move complete."); 
-
-                                    //this.m_initStartPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x, 
-                                                //this.m_cubeList[0].transform.localPosition.y,
-                                                //this.m_cubeList[0].transform.localPosition.z);
-                                    //this.m_initEndPosition = egret3d.Vector3.create(this.m_cubeList[0].transform.localPosition.x + this.m_cubeMoveDis, 
-                                                //this.m_cubeList[0].transform.localPosition.y,
-                                                //this.m_cubeList[0].transform.localPosition.z);
-                                    
-                                    EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, ["Camera Play"]);
-                                });
+                                //结束了整个关卡，闯关成功
+                                let user = new UserData();
+                                user.score = 100 * this.m_levelIndex;
+                                user.result = true;
+                                user.gems = 100;
+                                user.coins = 100;
+                                EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
                             }
                             else
                             {
-                                console.log("Move Camera is null.");
+                                EventsManager.getInstance().TriggerEvent(Events.OnGamePlayType, ["Camera Play"]);
                             }
-                            /*
-                            let user:UserData = new UserData();
-                            user.score = 100;
-                            user.result = true;
-                            user.gems = 100;
-                            user.coins = 100;
-                            EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
-                            */
-                        }
-                    });
-                    this.m_moveIndex++;
-                    if(this.m_moveIndex <= this.m_cubeList.length)
+                        });
+                    }
+                    else
                     {
-                        let curIndex:number = 0;
-                        for (let index = this.m_moveIndex - 1; index < this.m_cubeList.length; index++)
-                        {
-                            const element =  this.m_cubeList[index];
-                            let endPos:egret3d.Vector3 = egret3d.Vector3.create(this.m_initStartPosition.x - (this.m_cubeWidth + this.m_cubeGap) * curIndex, this.m_initStartPosition.y, this.m_initStartPosition.z);
-                            let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
-                            element.OnMoveLocation(endPos, dir);
-                            curIndex++;
-                        }
-                    }                    
+                        console.log("Move Camera is null.");
+                    }
+                    /*
+                    let user:UserData = new UserData();
+                    user.score = 100;
+                    user.result = true;
+                    user.gems = 100;
+                    user.coins = 100;
+                    EventsManager.getInstance().TriggerEvent(Events.OnGameEndType, [user]);
+                    */
+                }
+            });
+            this.m_moveIndex++;
+            if(this.m_moveIndex <= this.m_cubeList.length)
+            {
+                let curIndex:number = 0;
+                for (let index = this.m_moveIndex - 1; index < this.m_cubeList.length; index++)
+                {
+                    const element =  this.m_cubeList[index];
+                    let endPos:egret3d.Vector3 = egret3d.Vector3.create(this.m_initStartPosition.x - (this.m_cubeWidth + this.m_cubeGap) * curIndex, this.m_initStartPosition.y, this.m_initStartPosition.z);
+                    let dir = egret3d.Vector3.create(this.m_initDirection.x, this.m_initDirection.y, this.m_initDirection.z);
+                    element.OnMoveLocation(endPos, dir);
+                    curIndex++;
                 }
             }
         }
@@ -215,14 +262,22 @@ export default class Splash extends paper.Behaviour
         this.m_gameEnd = false;
         this.m_gamePlay = false;
         this.m_moveIndex = 1;
+
+        this.m_btnPressIndex = 0;
+        this.m_btnAPress = false;
     }
     OnGameEndTypeFunc(eventType:Events, items:any)
     {
         this.m_gameEnd = true;
+        this.m_gamePlay = false;
+        this.m_btnPressIndex = 0;
+        this.m_btnAPress = false;
     }
     OnGamPlayTypeFunc(eventType:Events, items:any)
     {
         //this.m_levelIndex = 0;
+        this.m_btnPressIndex = 0;
+        this.m_btnAPress = false;
         if(items.length > 0)
         {
             switch(items[0])
@@ -247,6 +302,7 @@ export default class Splash extends paper.Behaviour
         while(this.m_btnAPress)
         {
             console.log("PressMethod.");
+            this.MovePlayer();
             await new Promise((resolve) => setTimeout(resolve,delay));
             if(!this.m_btnAPress || this.m_btnPressIndex > 1)
             {

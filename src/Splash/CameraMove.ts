@@ -12,7 +12,7 @@ import EventsManager from "../utils/EventManager/EventsManager";
     private m_canMove:boolean = false;
     private m_moveSumDis:number = 0;
 
-    private m_moveSpeed:number = 1.5;
+    private m_moveSpeed:number = 2.3;
 
     private m_onFinish:()=>void;
 

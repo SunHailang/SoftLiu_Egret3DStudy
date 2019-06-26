@@ -51,8 +51,16 @@ export default class EuiRoot extends paper.Behaviour
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["showNotic", true, 15]);
 
             },null);
-
-            hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>{
+            hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e:egret.TouchEvent)=>
+            {
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_touchBegin_scenc"]);
+            }, this);
+            hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_END, (e:egret.TouchEvent)=>
+            {
+                EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_touchEnd_scenc"]);
+            }, this);
+            hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
+            {
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_click_scenc"]);
             }, null);
 
