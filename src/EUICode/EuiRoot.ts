@@ -1,8 +1,10 @@
-import EventsManager from "../utils/EventManager/EventsManager";
+import EventsManager from "../Utils/EventManager/EventsManager";
 import HSWData from "./euiData/HSWData";
 import UserData from "../User/UserData";
 import GameEndData from "./euiData/GameEndData";
 import GameStartData from "./euiData/GameStartData";
+import ThemeAdapter from "./ThemeAdapter";
+import AssetAdapter from "./AssetAdapter";
 
 /**
  *  __author__ = "sun hai lang"
@@ -44,6 +46,7 @@ export default class EuiRoot extends paper.Behaviour
             // 当 theme 加载完成调用 开始加载控件， 
             
             let hswData = new HSWData();
+            hswData.hostComponentKey = "HSWData";
             this.m_renderer.root.addChild(hswData);
             hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TextEvent)=>{
 
@@ -51,14 +54,31 @@ export default class EuiRoot extends paper.Behaviour
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["showNotic", true, 15]);
 
             },null);
+            hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e:egret.TouchEvent)=>
+            {
+                // 设置当前按钮的scale大小 为 0.85
+                egret.Tween.get(hswData.showNotic).to( {scaleX: 0.85, scaleY: 0.85}, 7 / 60 * 1000);
+            }, null);
+            hswData.showNotic.addEventListener(egret.TouchEvent.TOUCH_END, (e:egret.TouchEvent)=>
+            {
+                // 设置当前按钮的scale大小 为 1
+                egret.Tween.get(hswData.showNotic).to( {scaleX: 1, scaleY: 1}, 7 / 60 * 1000);
+            }, null);
+
             hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_BEGIN, (e:egret.TouchEvent)=>
             {
+                // 设置当前按钮的scale大小 为 0.85
+                egret.Tween.get(hswData.image_click_scenc).to( {scaleX: 0.85, scaleY: 0.85}, 7 / 60 * 1000);
+
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_touchBegin_scenc"]);
             }, this);
             hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_END, (e:egret.TouchEvent)=>
             {
+                // 设置当前按钮的scale大小 为 1
+                egret.Tween.get(hswData.image_click_scenc).to( {scaleX: 1, scaleY: 1}, 10 / 60 * 1000);
+
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_touchEnd_scenc"]);
-            }, this);
+            }, this); 
             hswData.image_click_scenc.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
             {
                 EventsManager.getInstance().TriggerEvent(Events.OnClickType, ["image_click_scenc"]);
@@ -130,54 +150,5 @@ export default class EuiRoot extends paper.Behaviour
     }
 }
 
-class ThemeAdapter implements eui.IThemeAdapter {
-    public getTheme(url: string, onSuccess: Function, onError: Function, thisObject: any): void {
-        function onResGet(e: string): void {
-            onSuccess.call(thisObject, e);
-        }
 
-        function onResError(e: RES.ResourceEvent): void {
-            if (e.resItem.url === url) {
-                RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onResError as any, null);
-                onError.call(thisObject);
-            }
-        }
 
-        if (typeof generateEUI !== 'undefined') {
-            egret.callLater(() => {
-                onSuccess.call(thisObject, generateEUI);
-            }, this);
-        }
-        else if (typeof generateEUI2 !== 'undefined') {
-            RES.getResByUrl("resource/gameEui.json", (data: any, url: any) => {
-                (window as any)["JSONParseClass"]["setData"](data);
-                onResGet(data);
-                egret.callLater(() => {
-                    onSuccess.call(thisObject, generateEUI2);
-                }, this);
-            }, this, RES.ResourceItem.TYPE_JSON);
-        }
-        else {
-            RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, onResError as any, null);
-            RES.getResByUrl(url, onResGet, this, RES.ResourceItem.TYPE_TEXT);
-        }
-    }
-}
-
-declare var generateEUI: { paths: string[], skins: any };
-declare var generateEUI2: { paths: string[], skins: any };
-
-class AssetAdapter implements eui.IAssetAdapter {
-    public getAsset(source: string, compFunc: Function, thisObject: any): void {
-        function onGetRes(data: any): void {
-            compFunc.call(thisObject, data, source);
-        }
-        let data = RES.getRes(source);
-        if (data) {
-            onGetRes(data);
-        }
-        else {
-            RES.getResAsync(source, onGetRes, this);
-        }
-    }
-}

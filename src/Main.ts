@@ -12,6 +12,9 @@ import CameraMove from "./Splash/CameraMove";
 import CreateCarPrefab from "./Splash/CreateCarPrefab";
 import CreatePlayerPrefab from "./Splash/CreatePlayerPrefab";
 
+// 单例 Behavior
+import SingleBehavior from "./Utils/SingleUtils/SingleBehavior";
+
 // Test code
 import SplashCollider from "./Collider/SplashCollider";
 import ColliderEuiRoot from "./Collider/ColliderEuiRoot";

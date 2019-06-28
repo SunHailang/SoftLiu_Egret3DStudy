@@ -417,6 +417,11 @@
 			"name": "default_thm_json"
 		},
 		{
+			"url": "Assets/json/UserData.json",
+			"type": "json",
+			"name": "Assets/json/UserData.json"
+		},
+		{
 			"url": "Assets/materials/blue.mat.json",
 			"type": "Material",
 			"name": "Assets/materials/blue.mat.json"

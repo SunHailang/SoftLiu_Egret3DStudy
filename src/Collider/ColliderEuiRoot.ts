@@ -4,7 +4,7 @@
  * 
  */
 
-import EventsManager from "../utils/EventManager/EventsManager";
+import EventsManager from "../Utils/EventManager/EventsManager";
 import UserData from "../User/UserData";
 import HSWData from "../EUICode/euiData/HSWData";
 import GameStartData from "../EUICode/euiData/GameStartData";

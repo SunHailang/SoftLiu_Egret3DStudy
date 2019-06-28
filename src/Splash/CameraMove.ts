@@ -1,4 +1,4 @@
-import EventsManager from "../utils/EventManager/EventsManager";
+import EventsManager from "../Utils/EventManager/EventsManager";
 
 /**
  *  __author__ = "sun hai lang"

@@ -1,5 +1,5 @@
-import EventsManager from "../utils/EventManager/EventsManager";
-import GameStateMachine from "../utils/GameStateMachine";
+import EventsManager from "../Utils/EventManager/EventsManager";
+import GameStateMachine from "../Utils/GameStateMachine";
 import CubeMove from "./CubeMove";
 
 /**

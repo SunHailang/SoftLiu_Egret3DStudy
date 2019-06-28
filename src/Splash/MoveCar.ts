@@ -1,5 +1,5 @@
-import EventsManager from "../utils/EventManager/EventsManager";
-import Vector3Utils from "../utils/VectorUtils/Vector3Utils";
+import EventsManager from "../Utils/EventManager/EventsManager";
+import Vector3Utils from "../Utils/VectorUtils/Vector3Utils";
 
 /**
  *  __author__ = "sun hai lang"

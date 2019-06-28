@@ -1,0 +1,20 @@
+{
+    "UserData":[
+        {
+            "key" : "hello1",
+            "score" : 50,
+            "result" : false,
+            "gems" : 100,
+            "coins" : 100
+        },
+        {
+            "key" : "hello2",
+            "score" : 150,
+            "result" : true,
+            "gems" : 300,
+            "coins" : 500
+        }
+    ]
+}
+
+

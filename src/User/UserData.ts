@@ -12,7 +12,7 @@
      {
 
      }
-
+     public key:string;
      public score:number;
      public result:boolean;
      public gems:number;

@@ -15,7 +15,8 @@ export default class Vector3Utils
     */
     public static multiplyScalar(vector:Readonly<egret3d.Vector3>, scalar:float):egret3d.Vector3
     {
-        let v = egret3d.Vector3.create(vector.x, vector.y, vector.z);
+        //克隆一个新的Vector3类型的数据
+        let v = vector.clone();//egret3d.Vector3.create(vector.x, vector.y, vector.z);
         return v.multiplyScalar(scalar);
     }
 
@@ -27,7 +28,7 @@ export default class Vector3Utils
     */
     public static addScalar(vector:Readonly<egret3d.Vector3>, scalar: float):egret3d.Vector3
     {
-        let v = egret3d.Vector3.create(vector.x, vector.y, vector.z);
+        let v = vector.clone();//egret3d.Vector3.create(vector.x, vector.y, vector.z);
         return v.addScalar(scalar);
     }
 
@@ -39,8 +40,8 @@ export default class Vector3Utils
      */
     public static add(vector1: Readonly<egret3d.Vector3>, vector2: Readonly<egret3d.Vector3>):egret3d.Vector3
     {
-        let v1 = egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
-        let v2 = egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
+        let v1 = vector1.clone();//egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
+        let v2 = vector2.clone();//egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
         return v1.add(v2);
     }
 
@@ -52,8 +53,8 @@ export default class Vector3Utils
      */
     public static subtract(vector1: Readonly<egret3d.Vector3>, vector2: Readonly<egret3d.Vector3>):egret3d.Vector3
     {
-        let v1 = egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
-        let v2 = egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
+        let v1 = vector1.clone();//egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
+        let v2 = vector2.clone();//egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
         return v1.subtract(v2);
     }
 
@@ -65,8 +66,8 @@ export default class Vector3Utils
      */
     public static cross(vector1: Readonly<egret3d.Vector3>, vector2: Readonly<egret3d.Vector3>): egret3d.Vector3
     {
-        let v1 = egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
-        let v2 = egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
+        let v1 = vector1.clone();//egret3d.Vector3.create(vector1.x, vector1.y, vector1.z);
+        let v2 = vector2.clone();//egret3d.Vector3.create(vector2.x, vector2.y, vector2.z);
 
         return v1.cross(v2);
     }
