@@ -20,7 +20,13 @@ import SplashCollider from "./Collider/SplashCollider";
 import ColliderEuiRoot from "./Collider/ColliderEuiRoot";
 
 async function main() {
+
+    //将default.res.json 文件下资源的url 自动拼接remote 地址，生成一个新的url资源地址
+    //修改resource资源加载地址
+    //const remoteDir:string = "";
+    //await RES.loadConfig("resource/default.res.json", remoteDir);
     await RES.loadConfig("resource/default.res.json", "resource/");
+
     await RES.getResAsync('Asset/scenes/Splash.scene.json');
     paper.Application.sceneManager.loadScene('Asset/scenes/Splash.scene.json');
 

@@ -59,3 +59,83 @@ export class InspectorFilterPlugin implements plugins.Command {
     async onFinish(commandContext: plugins.CommandContext) {
     }
 }
+
+export class MergeJsonPlugin implements plugins.Command {
+
+    private _jsonFileCollection:plugins.File[] = [];
+    private _jsonRemoteFileCollection:plugins.File[] = [];
+
+    constructor() {
+
+    }
+
+    async onFile(file: plugins.File) {
+
+        if(file.extname === '.json' ) {
+
+            if(file.origin.indexOf('default.res.json') < 0 && file.origin.indexOf('2d/') < 0)
+            {
+                this._jsonFileCollection.push(file);
+                return null;
+
+            } else {
+                return file;
+            }
+        }
+
+        return file;
+    }
+
+    async onFinish(commandContext: plugins.CommandContext) {
+
+        let mergeResult = {};
+        
+        for(let file of this._jsonFileCollection) {
+            mergeResult[file.origin.replace('resource/','')] =  JSON.stringify(JSON.parse(file.contents.toString()));
+        }
+        
+        commandContext.createFile(
+                'resource/all.mergeJson',new Buffer(JSON.stringify(mergeResult)),
+                {type:'mergeJson',subkeys:this._jsonFileCollection.map(file=>file.origin)}
+            );
+
+    }
+
+}
+
+export class CheckFileExistPlugin implements plugins.Command {
+    
+    async onFile(file:plugins.File) {
+
+        if(file.origin.indexOf('mergeJson') > 0) {
+            console.log('hjl.debug => mergeJson ',file.origin);
+        }
+
+        return file;
+    }
+
+    async onFinish(commandContext:plugins.CommandContext) {
+
+    }
+
+}
+
+export class OnelineJson implements plugins.Command {
+
+    async onFile(file:plugins.File) {
+
+        if(file.extname === '.json') {
+
+            file.contents = new Buffer(JSON.stringify(JSON.parse(file.contents.toString())));
+                        
+        }
+
+        return file;
+
+    }
+
+    async onFinish(commandContext:plugins.CommandContext) {
+
+    }
+
+}
