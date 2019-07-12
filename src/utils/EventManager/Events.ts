@@ -23,3 +23,9 @@
     //Collider Test
     OnColliderTestType,
  }
+
+
+ const enum EuiEvents
+ {
+    EuiLoadingType,
+ }

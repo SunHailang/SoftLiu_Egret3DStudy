@@ -1,27 +1,39 @@
 /**
- *  __author__ = "sun hai lang"
- *  __date__ = 2019-06-14
+ * 
+ * __author__ = "sun hai lang"
+ * __date__ = "2019-07-01"
+ * 
  * 
  */
 
-import EventsManager from "../Utils/EventManager/EventsManager";
-import UserData from "../User/UserData";
+import AssetAdapter from "../EUICode/AssetAdapter";
+import ThemeAdapter from "../EUICode/ThemeAdapter";
+import LoadingData from "../EUICode/euiData/LoadingData";
 import HSWData from "../EUICode/euiData/HSWData";
 import GameStartData from "../EUICode/euiData/GameStartData";
-import ThemeAdapter from "../EUICode/ThemeAdapter";
-import AssetAdapter from "../EUICode/AssetAdapter";
+import EventsManager from "../Utils/EventManager/EventsManager";
 
 
-export default class ColliderEuiRoot extends paper.Behaviour
+
+
+export default class EuiLoading extends paper.Behaviour
 {
 
-    private m_renderer:egret3d.Egret2DRenderer = null;
+    private m_renderer:egret3d.Egret2DRenderer;
 
-    private m_init:boolean = false;
     private m_euiComplete:boolean = false;
 
+    private m_initComplete:boolean = false;
+
+    onAwake(config:any)
+    {
+        this.m_initComplete = false;
+    }
+
     onStart()
-    {        
+    {
+        this.m_euiComplete = false;
+
         this.m_renderer = this.gameObject.getComponent(egret3d.Egret2DRenderer)!;
         const adapter = new egret3d.MatchWidthOrHeightAdapter();
         adapter.setResolution(egret3d.stage.size.w, egret3d.stage.size.h);
@@ -36,12 +48,9 @@ export default class ColliderEuiRoot extends paper.Behaviour
 
             // 当 theme 加载完成调用 开始加载控件， 
             
-            let start:GameStartData = new GameStartData();
-            this.m_renderer.root.addChild(start);        
-            start.m_btnPlay.addEventListener(egret.TouchEvent.TOUCH_TAP, (e:egret.TouchEvent)=>
-            {
-                EventsManager.getInstance().TriggerEvent(Events.OnColliderTestType, []);
-            }, null);
+            let loading:LoadingData = new LoadingData();
+            loading.hostComponentKey = "LoadingData";
+            this.m_renderer.root.addChild(loading);
 
             
 
@@ -49,15 +58,16 @@ export default class ColliderEuiRoot extends paper.Behaviour
             this.m_euiComplete = true;
 
         }, this);
-        
     }
 
-    onLateUpdate(delta:number)
+    onUpdate(delta:number)
     {
-        if(!this.m_init && this.m_euiComplete)
+        if(!this.m_initComplete && this.m_euiComplete)
         {
-            this.m_init = true;
-            //TODO
+            this.m_initComplete = true;
+            // TODO eui 加载完成
+            EventsManager.getInstance().TriggerEvent(Events.OnEUILoadCompleteType, []);
         }
     }
+
 }

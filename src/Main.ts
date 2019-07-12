@@ -12,6 +12,10 @@ import CameraMove from "./Splash/CameraMove";
 import CreateCarPrefab from "./Splash/CreateCarPrefab";
 import CreatePlayerPrefab from "./Splash/CreatePlayerPrefab";
 
+// Loading Scene
+import Loading from "./Loading/Loading";
+import EuiLoading from "./Loading/EuiLoading";
+
 // 单例 Behavior
 import SingleBehavior from "./Utils/SingleUtils/SingleBehavior";
 
@@ -38,6 +42,10 @@ async function main() {
     CameraMove;
     CreateCarPrefab;
     CreatePlayerPrefab;
+
+    // Loading Scene
+    Loading;
+    EuiLoading;
 
     //Test code
     SplashCollider;

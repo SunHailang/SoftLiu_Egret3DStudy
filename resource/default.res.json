@@ -252,6 +252,16 @@
 			"name": "selected_png"
 		},
 		{
+			"url": "2d/assets/Loading/FE_Loading_2K.image.json",
+			"type": "json",
+			"name": "FE_Loading_2K_image_json"
+		},
+		{
+			"url": "2d/assets/Loading/FE_Loading_2K.png",
+			"type": "image",
+			"name": "FE_Loading_2K_png"
+		},
+		{
 			"url": "2d/assets/Panel/border.image.json",
 			"type": "json",
 			"name": "border_image_json"
@@ -515,6 +525,11 @@
 			"url": "Assets/scenes/Collider.scene.json",
 			"type": "Scene",
 			"name": "Assets/scenes/Collider.scene.json"
+		},
+		{
+			"url": "Assets/scenes/Loading.scene.json",
+			"type": "Scene",
+			"name": "Assets/scenes/Loading.scene.json"
 		},
 		{
 			"url": "Assets/scenes/Splash.scene.json",

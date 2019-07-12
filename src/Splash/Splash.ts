@@ -9,6 +9,7 @@ import CubeMove from "./CubeMove";
 import UserData from "../User/UserData";
 import Vector3Utils from "../Utils/VectorUtils/Vector3Utils";
 import CameraMove from "./CameraMove";
+import RandomUtils from "../Utils/RandomUtils";
 
 export default class Splash extends paper.Behaviour
 {
@@ -72,6 +73,7 @@ export default class Splash extends paper.Behaviour
         this.m_cameraMove = this.m_camera.getComponent(CameraMove)! as CameraMove;
 
         this.ReadJson();
+
     }
 
     async ReadJson()
