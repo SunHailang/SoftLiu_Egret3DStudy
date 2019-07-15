@@ -17,7 +17,7 @@
 		"GameEndData": "resource/2d/eui_skins/GameEndDataSkin.exml",
 		"GameStartData": "resource/2d/eui_skins/GameStartDataSkin.exml",
 		"LoadingData": "resource/2d/eui_skins/LoadingSkin.exml",
-		"ProgressBarLoading":"resource/2d/eui_skins/ProgressBarLoadingSkin.exml"
+		"ProgressBarLoading": "resource/2d/eui_skins/ProgressBarLoadingSkin.exml"
 	},
 	"autoGenerateExmlsList": true,
 	"exmls": [
@@ -29,6 +29,7 @@
 		"resource/2d/eui_skins/HSliderSkin.exml",
 		"resource/2d/eui_skins/HSWDataSkin.exml",
 		"resource/2d/eui_skins/ItemRendererSkin.exml",
+		"resource/2d/eui_skins/ProgressBarLoadingSkin.exml",
 		"resource/2d/eui_skins/LoadingSkin.exml",
 		"resource/2d/eui_skins/PanelSkin.exml",
 		"resource/2d/eui_skins/ProgressBarSkin.exml",
@@ -37,8 +38,7 @@
 		"resource/2d/eui_skins/TextInputSkin.exml",
 		"resource/2d/eui_skins/ToggleSwitchSkin.exml",
 		"resource/2d/eui_skins/VScrollBarSkin.exml",
-		"resource/2d/eui_skins/VSliderSkin.exml",
-		"resource/2d/eui_skins/ProgressBarLoadingSkin.exml"
+		"resource/2d/eui_skins/VSliderSkin.exml"
 	],
 	"path": "resource/2d/default.thm.json"
 }

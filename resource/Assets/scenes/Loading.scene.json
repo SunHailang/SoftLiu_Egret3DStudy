@@ -5,7 +5,7 @@
         {
             "uuid": "74463213-cbc3-4d34-b1c0-d0ad0a3bc968",
             "class": "paper.Scene",
-            "name": "newScene.scene.json",
+            "name": "Loading.scene.json",
             "extras": {},
             "entities": [
                 {

@@ -9,7 +9,7 @@
         {
             "uuid": "77159c6b-92de-4deb-953a-8519744ec520",
             "class": "paper.Scene",
-            "name": "newScene.scene.json",
+            "name": "Collider.scene.json",
             "extras": {},
             "entities": [
                 {

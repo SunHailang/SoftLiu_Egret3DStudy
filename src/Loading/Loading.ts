@@ -7,15 +7,13 @@
  */
 
 import RandomUtils from "../Utils/RandomUtils";
+import { Debug } from "../utils/Debug";
 
 
 export default class Loading extends paper.Behaviour
 {
     onStart()
     {        
-        for (let index = 0; index < 10; index++) 
-        {    
-            
-        }
+        
     }
 }

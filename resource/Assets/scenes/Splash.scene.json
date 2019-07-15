@@ -12,7 +12,7 @@
         {
             "uuid": "31b0016b-2199-4fdb-a2b9-0f38d32bb4f2",
             "class": "paper.Scene",
-            "name": "newScene.scene.json",
+            "name": "Splash.scene.json",
             "extras": {},
             "entities": [
                 {
